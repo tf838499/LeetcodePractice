@@ -29,3 +29,6 @@
 
 ⭕ 🎈 344. Reverse String  
 ⭕ 🎈 541. Reverse String II  
+⭕ 🎈 28. Implement strStr()  
+⭕ 🎈 151. Reverse Words in a String  
+🚩 🎈 459. Repeated Substring Pattern  
