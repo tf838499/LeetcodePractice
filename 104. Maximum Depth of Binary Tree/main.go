@@ -8,12 +8,9 @@ import (
 )
 
 /*
-Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
+Given the root of a binary tree, return its maximum depth.
 
-Input: root = [1,2,2,3,4,4,3]
-Output: true
-Input: root = [1,2,2,null,3,null,3]
-Output: false
+A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
 */
 
 type TreeNode struct {
@@ -22,26 +19,44 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-func isSymmetric(root *TreeNode) (ans bool) {
+/* recursive */
+func maxDepth(root *TreeNode) int {
+	// ans := 0
 	if root == nil {
-		return true
+		return 0
 	}
-	ans = compare(root.Left, root.Right)
-	return ans
-	// return
+	// ans = ans + 1
+	n1 := maxDepth(root.Left)
+	n2 := maxDepth(root.Right)
+
+	if n1 > n2 {
+		return n1 + 1
+	}
+	return n2 + 1
 }
 
-func compare(left *TreeNode, right *TreeNode) (ans bool) {
-	if left == nil || right == nil {
-		return left == right
-	}
-	if left.Val != right.Val {
-		return false
-	}
-	ans = compare(left.Left, right.Right) && compare(left.Right, right.Left)
-	return ans
-}
+/* stack */
+// func maxDepth(root *TreeNode) int {
+// 	ans := 0
+// 	if root == nil {
+// 		return ans
+// 	}
+// 	stack := []*TreeNode{root}
 
+// 	for len(stack) != 0 {
+// 		for _, p := range stack {
+// 			stack = stack[1:]
+// 			if p.Right != nil {
+// 				stack = append(stack, p.Right)
+// 			}
+// 			if p.Left != nil {
+// 				stack = append(stack, p.Left)
+// 			}
+// 		}
+// 		ans++
+// 	}
+// 	return ans
+// }
 func main() {
 	var Node7 *TreeNode = &TreeNode{
 		Val: 3.0,
@@ -65,5 +80,5 @@ func main() {
 		Val: 1.0, Left: Node2, Right: Node3,
 	}
 
-	isSymmetric(Node1)
+	maxDepth(Node1)
 }
