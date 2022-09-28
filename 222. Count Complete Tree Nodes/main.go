@@ -8,6 +8,11 @@ import (
 )
 
 /*
+Medium
+recursion
+binary tree
+done
+
 Given the root of a complete binary tree, return the number of the nodes in the tree.
 
 According to Wikipedia, every level, except possibly the last,

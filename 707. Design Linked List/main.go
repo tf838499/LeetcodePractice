@@ -155,6 +155,10 @@ type MyLinkedList struct {
 	Next *MyLinkedList
 }
 
+/*
+linkedlist
+done
+*/
 // type MyLinkedList struct {
 // 	head *ListNode
 // }

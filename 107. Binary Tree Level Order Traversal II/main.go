@@ -8,6 +8,11 @@ import (
 )
 
 /*
+Medium
+bfs
+queue
+binary tree
+done
 Input: root = [3,9,20,null,null,15,7]
 Output: [[15,7],[9,20],[3]]
 

@@ -6,6 +6,11 @@ import (
 )
 
 /*
+Medium
+string
+done
+
+
 Implement strStr().
 
 Given two strings needle and haystack,

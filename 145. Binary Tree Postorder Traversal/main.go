@@ -7,9 +7,12 @@ import (
 )
 
 /*
+Easy
+recursive
+binary tree
+done
+
 Given the root of a binary tree, return the inorder traversal of its nodes' values.
-
-
 
 L0 → L1 → … → Ln - 1 → Ln
 L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …

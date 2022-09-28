@@ -6,6 +6,10 @@ import (
 )
 
 /*
+easy
+two pointer
+done
+
 Given an integer array nums and an integer val, remove all occurrences of val in nums in-place.
 The relative order of the elements may be changed.
 
@@ -44,34 +48,34 @@ func removeElement(nums []int, val int) int {
 	return end + 1
 }
 func removeElement(nums []int, val int) int {
-    
-    size := len( nums )
-    
-    // two-pointers
-    // otherIdx: index for other elements
-    // targetIdx: index for target elements with val
-    
-    otherIdx, targetIdx := 0, size-1
-    
-    for otherIdx <= targetIdx{
-       
-        if nums[otherIdx] == val{
-            
-            // swap target elements to the tail side
-            nums[otherIdx], nums[targetIdx] = nums[targetIdx], nums[otherIdx]
-            
-            targetIdx -= 1
-        }else{
-            
-            // increase the index when we meet others
-            otherIdx += 1
-        }
-        
-    }
-    
-    // length of others is the answer
-    return otherIdx
-    
+
+	size := len(nums)
+
+	// two-pointers
+	// otherIdx: index for other elements
+	// targetIdx: index for target elements with val
+
+	otherIdx, targetIdx := 0, size-1
+
+	for otherIdx <= targetIdx {
+
+		if nums[otherIdx] == val {
+
+			// swap target elements to the tail side
+			nums[otherIdx], nums[targetIdx] = nums[targetIdx], nums[otherIdx]
+
+			targetIdx -= 1
+		} else {
+
+			// increase the index when we meet others
+			otherIdx += 1
+		}
+
+	}
+
+	// length of others is the answer
+	return otherIdx
+
 }
 
 func main() {

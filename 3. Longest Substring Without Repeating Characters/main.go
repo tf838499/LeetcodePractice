@@ -4,6 +4,10 @@ package main
 // "strconv"
 
 /*
+Medium
+hash map
+sliding window
+done
 
 Given a string s, find the length of the longest substring without repeating characters.
 

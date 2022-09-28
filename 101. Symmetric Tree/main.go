@@ -8,6 +8,12 @@ import (
 )
 
 /*
+Easy
+recursive
+dfs
+tree
+done
+
 Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
 
 Input: root = [1,2,2,3,4,4,3]
@@ -22,16 +28,6 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-// func invertTree(root *TreeNode) *TreeNode {
-// 	if root == nil {
-// 		return root
-// 	}
-// 	root.Left, root.Right = root.Right, root.Left
-// 	// swap(root.Left, root.Right)
-// 	invertTree(root.Left)
-// 	invertTree(root.Right)
-// 	return root
-// }
 func isSymmetric(root *TreeNode) (ans bool) {
 	if root == nil {
 		return true
