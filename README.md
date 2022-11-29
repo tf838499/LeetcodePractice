@@ -22,7 +22,7 @@
 
 ## topic : hash map
 
-🚩 🎈 1. Two Sum  
+⭕ 🎈 1. Two Sum  
 🚩 🔥 15. 3Sum  
 🚩 🔥 18. 4Sum  
 ⭕ 🎈 202. Happy Number  
@@ -36,6 +36,7 @@
 
 ⭕ 🎈 35. Search Insert Position 
 ⭕ 🎈 278. First Bad Version 
+⭕ 🎈 374. Guess Number Higher or Lower
 ⭕ 🎈 704. Binary Search
 
 ## topic : Dynamic Programming  
