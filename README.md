@@ -97,3 +97,18 @@ leetcode 筆記
 是否大於targe"[大於時，已經沒有解可以找"，或是數組尾部是否小於target也是代表沒有解可以找
 2. 可以使用分治法，直接用兩次binary search另外搜尋頭尾的index
 3. 寫binary search要注意邊界以及如何做出Mid
+12/1
+leetcode 88 未寫
+
+12/2
+leetcode 455
+greedy貪婪法 每次操作都是局部最優，從而得到結果為全局最優
+
+12/5
+leetcode 88 
+two pointer，
+想法:使用two pointer，跟搭配一個pointer指向第二個矩陣
+作法:先用Fast找到0位置(注意0不算，但判斷式會算)，然後交換Slow跟fast交換0位置，在跟矩陣2交換值，此時有問題與0交換值可能比前面還小，所以在思考要怎麼將前面再重新排序，但會導致不斷地重新排位置
+別人作法:直接重後面開始排序，就不必考慮要重新排序前面大小!
+心得:這次解了快兩天，卡在死胡同，原先一定要重前面排到後面，但轉向思考一下，從後面變寫到前面快速簡單
+ex:在多個條件式下 switch case比if else還快，""因為golang compiler 會把 switch 編譯成 binary search，所以不管各個 case 順序如何，根據 input variable 找到對應的 condition 的時間大致相同""注意 如果條件式通常發生在前面的話if else會比較快。
