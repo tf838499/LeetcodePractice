@@ -86,8 +86,10 @@
 2131
 724
 947
-
-
+熟練度
+- [] binary search 34
+- [] two pointer 88 86 75
+- [] sliding windows
 leetcode 筆記
 34 在數組中找尋目標數，數組已排序，且目標數會重複出現，找尋頭尾的目標數index
 想法 :
@@ -98,7 +100,7 @@ leetcode 筆記
 2. 可以使用分治法，直接用兩次binary search另外搜尋頭尾的index
 3. 寫binary search要注意邊界以及如何做出Mid
 12/1
-leetcode 88 未寫
+leetcode 88 未寫 (12/5完成)
 
 12/2
 leetcode 455
@@ -112,3 +114,23 @@ two pointer，
 別人作法:直接重後面開始排序，就不必考慮要重新排序前面大小!
 心得:這次解了快兩天，卡在死胡同，原先一定要重前面排到後面，但轉向思考一下，從後面變寫到前面快速簡單
 ex:在多個條件式下 switch case比if else還快，""因為golang compiler 會把 switch 編譯成 binary search，所以不管各個 case 順序如何，根據 input variable 找到對應的 condition 的時間大致相同""注意 如果條件式通常發生在前面的話if else會比較快。
+
+12/7 leetcode 75 sort color
+想法:使用two pointer去排列，前後比大小，如果後面數值比前面小則--index去往前回推，
+回推到數值比當前小的位置，這樣可以確保前面都是已經過排序，
+別人作法: 100% 注意題目只有0,1,2的數字，可以用switch case進行排列，如數字無限，則要改用排序法(冒泡等等)
+
+12/12 86
+two pointer
+題目:重新排序，比target的排序在前，比target小的排序在後，且出現順序不可調換
+想法:
+1. 使用two pointer找比taget大(slow)，跟比target小(first)，在利用linked list特性，直接交換兩個node，但會遇到一旦一個交換後會消失後面的node導致錯誤(錯誤想法)
+2. 且如果小於target的值不再最前面會導致，前面的值沒有被交換(slow)
+別人作法: 開兩個List node矩陣跟two pointer(first & second)，兩個List node分別指向兩個two pointer，
+只需要將 < target 存到first，並指向下一個小於的，second則反之儲存大的，最後在合併，即可德解
+
+12/12 208
+sliding windows
+題目:相加後大於或是等於target的最小的數組長度
+想法:使用sliding windows，建立一個空int矩陣，跟總和值，如總和值小於target則放入矩陣內
+並且加入總和值，如遇到總和值大於target，則減去矩陣第一位數值，並移除出矩陣，即可得到解
