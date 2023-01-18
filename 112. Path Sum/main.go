@@ -49,12 +49,14 @@ func hasPathSum(root *TreeNode, targetSum int) bool {
 	if root == nil {
 		return false
 	}
+
 	divideSum := targetSum - root.Val
 	result := false
 	if divideSum == 0 && root.Right == nil && root.Left == nil {
 		result = true
 		return result
 	}
+
 	result = hasPathSum(root.Left, divideSum) || hasPathSum(root.Right, divideSum)
 	return result
 }
