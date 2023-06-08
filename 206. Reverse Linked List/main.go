@@ -1,21 +1,17 @@
 package main
 
-import (
-	"fmt"
-	"strconv"
-)
-
-/**
+/*
+*
 Easy
 iterative
 linkedlist
 done
 
- * Definition for singly-linked list.
- * type ListNode struct {
- *     Val int
- *     Next *ListNode
- * }
+  - Definition for singly-linked list.
+  - type ListNode struct {
+  - Val int
+  - Next *ListNode
+  - }
 */
 type ListNode struct {
 	Val  int
@@ -51,14 +47,14 @@ type ListNode struct {
 // 	return reversePair(head, temp)
 // }
 
-// func reversePair(last *ListNode, head *ListNode) *ListNode {
-// 	if head == nil{
-// 		return last
-// 	}
-// 	temp := head.Next
-// 	head.Next = last
-// 	return reversePair(head, temp)
-// }
+//	func reversePair(last *ListNode, head *ListNode) *ListNode {
+//		if head == nil{
+//			return last
+//		}
+//		temp := head.Next
+//		head.Next = last
+//		return reversePair(head, temp)
+//	}
 func reverseListRecursion(head, last *ListNode) *ListNode {
 	/* */
 	if last == nil {
@@ -68,24 +64,42 @@ func reverseListRecursion(head, last *ListNode) *ListNode {
 	last.Next = head
 	return reverseListRecursion(last, temp)
 }
-func reverseList(head *ListNode) *ListNode {
-	if head == nil {
-		return head
+
+// func reverseList(head *ListNode) *ListNode {
+// 	if head == nil {
+// 		return head
+// 	}
+// 	var ans *ListNode
+// 	temp := head.Next
+// 	head.Next = nil
+// 	ans = reverseListRecursion(head, temp)
+// 	return ans
+// }
+
+//	func reverseList(head *ListNode) *ListNode {
+//		help(head, nil)
+//		return head
+//	}
+//
+func help(head *ListNode, pre *ListNode) *ListNode {
+	if head != nil {
+		head = head.Next
+		rever := help(head, head.Next)
+		pre = rever
 	}
-	var ans *ListNode
-	temp := head.Next
-	head.Next = nil
-	ans = reverseListRecursion(head, temp)
-	return ans
+	return head
+}
+func helper(current *ListNode, prev *ListNode) *ListNode {
+	if current == nil {
+		return prev
+	}
+	next := current.Next
+	current.Next = prev
+	return helper(next, current)
 }
 
-func outputMessage(head *ListNode, title string) {
-	foo := title
-	for head != nil {
-		foo = foo + strconv.Itoa(head.Val) + " "
-		head = head.Next
-	}
-	fmt.Print(foo + "\n")
+func reverseList(head *ListNode) *ListNode {
+	return helper(head, nil)
 }
 func main() {
 	var HeadNode *ListNode = &ListNode{
@@ -109,7 +123,6 @@ func main() {
 	thirdNode.Next = Node4
 	Node4.Next = Node5
 	// outputMessage(HeadNode, "input : ")
-	ans := reverseList(HeadNode)
-	outputMessage(ans, "result : ")
+	reverseList(HeadNode)
 
 }

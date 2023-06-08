@@ -1,9 +1,6 @@
 package main
 
-import (
-	"fmt"
-	// "strconv"
-)
+// "strconv"
 
 /*
 easy
@@ -24,43 +21,65 @@ Input: s = "abcd", k = 2
 Output: "bacd"
 */
 
+// func reverseStr(s string, k int) string {
+// 	ans := []byte(s)
+// 	// var stri string
+// 	// "cbadef"
+
+// 	for i := 0; i < len(ans)-1; {
+// 		// ans[i], ans[i+1] = ans[i+1], ans[i]
+// 		// tmp := ans[i : i+k]
+// 		if len(ans) < k {
+// 			k = len(ans)
+// 		} else if len(ans) < k+i {
+// 			k = len(ans) - i
+// 		}
+// 		for j := 0; j < k/2; j++ {
+// 			ans[i+j], ans[i+(k-j-1)] = ans[i+(k-j-1)], ans[i+j]
+// 		}
+// 		i = i + 2*k
+// 		// k = i + k
+// 	}
+
+// 	// stri = reverseStr(string(ans[2*k:]), k)
+// 	// return stri
+
+//		// for i := 0; i < k/2; i++ {
+//		// 	ans[i], ans[k-(i+1)] = ans[k-(i+1)], ans[i]
+//		fmt.Println(string(ans[:]))
+//		// }
+//		return string(ans[:])
+//	}
 func reverseStr(s string, k int) string {
-	ans := []byte(s)
-	// var stri string
-	// "cbadef"
+	p := []byte(s)
 
-	for i := 0; i < len(ans)-1; {
-		// ans[i], ans[i+1] = ans[i+1], ans[i]
-		// tmp := ans[i : i+k]
-		if len(ans) < k {
-			k = len(ans)
-		} else if len(ans) < k+i {
-			k = len(ans) - i
+	for i := 0; i < len(p); i += 2 * k {
+		lenk := i + k
+		if lenk > len(p) {
+
+			lenk = len(p)
 		}
-		for j := 0; j < k/2; j++ {
-			ans[i+j], ans[i+(k-j-1)] = ans[i+(k-j-1)], ans[i+j]
+		tmp := p[i:lenk]
+
+		for j := 0; j < len(tmp)/2; j++ {
+			tmp[j], tmp[len(tmp)-1-j] = tmp[len(tmp)-1-j], tmp[j]
 		}
-		i = i + 2*k
-		// k = i + k
 	}
-
-	// stri = reverseStr(string(ans[2*k:]), k)
-	// return stri
-
-	// for i := 0; i < k/2; i++ {
-	// 	ans[i], ans[k-(i+1)] = ans[k-(i+1)], ans[i]
-	fmt.Println(string(ans[:]))
-	// }
-	return string(ans[:])
+	return string(p)
 }
-
 func main() {
-	words := "hyzqyljrnigxvdtneasepfahmtyhlohwxmkqcdfehybknvdmfrfvtbsovjbdhevlfxpdaovjgunjqlimjkfnqcqnajmebeddqsgl"
-	// words := "abcdefg"
+	// words := "hyzqyljrnigxvdtneasepfahmtyhlohwxmkqcdfehybknvdmfrfvtbsovjbdhevlfxpdaovjgunjqlimjkfnqcqnajmebeddqsgl"
+	words := "abcd"
+	// "dcba"
+	// Output: "bacdfeg"
+	// Input: s = "abcd", k = 2
+	// Output: "bacd"
+	// "abcdef"
+	// "cbadef"
 	// words := []byte{"H", "a", "n", "n", "a", "h"}
 	// fmt.Print(len(words))
 	// words := ["bella","label","roller"]
-	reverseStr(words, 39)
+	reverseStr(words, 1213)
 
 }
 

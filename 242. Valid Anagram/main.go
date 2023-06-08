@@ -10,26 +10,26 @@ easy
 hashmap
 done
 */
-func isAnagram(s string, t string) bool {
-	if len(s) != len(t) {
-		return false
-	}
-	m := make(map[string]int)
-	n := make(map[string]int)
-	a := []rune(s)
-	b := []rune(t)
-	// str := strings.Split("HELLO", "")
-	for i := 0; i < len(s); i++ {
-		m[string(a[i])] = m[string(a[i])] + 1
-		n[string(b[i])] = n[string(b[i])] + 1
-	}
-	for i := 0; i < len(a); i++ {
-		if m[string(a[i])] != n[string(a[i])] {
-			return false
-		}
-	}
-	return true
-}
+// func isAnagram(s string, t string) bool {
+// 	if len(s) != len(t) {
+// 		return false
+// 	}
+// 	m := make(map[string]int)
+// 	n := make(map[string]int)
+// 	a := []rune(s)
+// 	b := []rune(t)
+// 	// str := strings.Split("HELLO", "")
+// 	for i := 0; i < len(s); i++ {
+// 		m[string(a[i])] = m[string(a[i])] + 1
+// 		n[string(b[i])] = n[string(b[i])] + 1
+// 	}
+// 	for i := 0; i < len(a); i++ {
+// 		if m[string(a[i])] != n[string(a[i])] {
+// 			return false
+// 		}
+// 	}
+// 	return true
+// }
 
 // func isAnagram(s string, t string) bool {
 // 	if len(s) != len(t) {
@@ -56,6 +56,20 @@ func isAnagram(s string, t string) bool {
 // 	return true
 // }
 
+func isAnagram(s string, t string) bool {
+	hashtable := make(map[rune]int)
+	for _, v := range s {
+		hashtable[v]++
+	}
+	for _, v := range t {
+		hashtable[v]--
+		if hashtable[v] == 0 {
+			delete(hashtable, v)
+		}
+	}
+	return len(hashtable) == 0
+}
+
 /*
 Given two strings s and t, return true if t is an anagram of s, and false otherwise.
 
@@ -75,8 +89,10 @@ func main() {
 	// s := "anagram"
 	// t := "nagaram"
 
-	s := "rat"
-	t := "car"
+	s := "anagram"
+	t := "nagaram"
+	isAnagram(s, t)
+	// Output: true
 	fmt.Println(len(s))
 	fmt.Println(len(t))
 	fmt.Println(isAnagram(s, t))

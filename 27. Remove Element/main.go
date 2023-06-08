@@ -1,9 +1,7 @@
 package main
 
-import (
 // "fmt"
 // "strconv"
-)
 
 /*
 easy
@@ -30,62 +28,75 @@ Explanation: Your function should return k = 5, with the first five elements of 
 Note that the five elements can be returned in any order.
 It does not matter what you leave beyond the returned k (hence they are underscores).
 */
-
 func removeElement(nums []int, val int) int {
-	var start = 0
-	var end = len(nums) - 1
-	for start <= end {
-		for end > -1 && nums[end] == val {
-			end--
-		}
+	l, r := 0, len(nums)-1
 
-		if end > start && nums[start] == val {
-			nums[start], nums[end] = nums[end], nums[start]
-		}
-		start++
-	}
-
-	return end + 1
-}
-func removeElement(nums []int, val int) int {
-
-	size := len(nums)
-
-	// two-pointers
-	// otherIdx: index for other elements
-	// targetIdx: index for target elements with val
-
-	otherIdx, targetIdx := 0, size-1
-
-	for otherIdx <= targetIdx {
-
-		if nums[otherIdx] == val {
-
-			// swap target elements to the tail side
-			nums[otherIdx], nums[targetIdx] = nums[targetIdx], nums[otherIdx]
-
-			targetIdx -= 1
+	for l <= r {
+		if nums[l] == val {
+			nums[l], nums[r] = nums[r], nums[l]
+			r--
 		} else {
-
-			// increase the index when we meet others
-			otherIdx += 1
+			l++
 		}
-
 	}
-
-	// length of others is the answer
-	return otherIdx
-
+	return l
 }
+
+// func removeElement(nums []int, val int) int {
+// 	var start = 0
+// 	var end = len(nums) - 1
+// 	for start <= end {
+// 		for end > -1 && nums[end] == val {
+// 			end--
+// 		}
+
+// 		if end > start && nums[start] == val {
+// 			nums[start], nums[end] = nums[end], nums[start]
+// 		}
+// 		start++
+// 	}
+
+// 	return end + 1
+// }
+// func removeElement(nums []int, val int) int {
+
+// 	size := len(nums)
+
+// 	// two-pointers
+// 	// otherIdx: index for other elements
+// 	// targetIdx: index for target elements with val
+
+// 	otherIdx, targetIdx := 0, size-1
+
+// 	for otherIdx <= targetIdx {
+
+// 		if nums[otherIdx] == val {
+
+// 			// swap target elements to the tail side
+// 			nums[otherIdx], nums[targetIdx] = nums[targetIdx], nums[otherIdx]
+
+// 			targetIdx -= 1
+// 		} else {
+
+// 			// increase the index when we meet others
+// 			otherIdx += 1
+// 		}
+
+// 	}
+
+// 	// length of others is the answer
+// 	return otherIdx
+
+// }
 
 func main() {
 	// hay := "mississippi"
 	// nee := "issipi"
 	// var num = []int{1}
 	// var num = []int{4, 5}
-	var num = []int{0, 1, 2, 2, 3, 0, 4, 2}
-	val := 4
-
+	// var num = []int{0, 1, 2, 2, 3, 0, 4, 2}
+	var num = []int{3, 2, 2, 3}
+	val := 3
 	// words := ["bella","label","roller"]
 	removeElement(num, val)
 }

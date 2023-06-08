@@ -1,10 +1,8 @@
 package main
 
-import (
 // "fmt"
 // "strconv"
 // "math"
-)
 
 /*
 Given an array of positive integers nums and a positive integer target,
@@ -21,31 +19,31 @@ Input: target = 11, nums = [1,1,1,1,1,1,1,1]
 Output: 0
 */
 
-func minSubArrayLen(target int, nums []int) int {
-	windows := []int{}
-	sum := 0
-	ans := 100000000000000000
-	//2, 3, 1, 2, 4, 3
-	for _, val := range nums {
-		if target >= sum {
-			sum = sum + val
-			windows = append(windows, val)
-		}
-		for target <= sum {
-			if sum >= target && ans > len(windows) {
-				ans = len(windows)
-			}
-			sum = sum - windows[0]
-			windows = windows[1:]
+// func minSubArrayLen(target int, nums []int) int {
+// 	windows := []int{}
+// 	sum := 0
+// 	ans := 100000000000000000
+// 	//2, 3, 1, 2, 4, 3
+// 	for _, val := range nums {
+// 		if target >= sum {
+// 			sum = sum + val
+// 			windows = append(windows, val)
+// 		}
+// 		for target <= sum {
+// 			if sum >= target && ans > len(windows) {
+// 				ans = len(windows)
+// 			}
+// 			sum = sum - windows[0]
+// 			windows = windows[1:]
 
-		}
+// 		}
 
-	}
-	if ans == 100000000000000000 {
-		ans = 0
-	}
-	return ans
-}
+// 	}
+// 	if ans == 100000000000000000 {
+// 		ans = 0
+// 	}
+// 	return ans
+// }
 
 // func minSubArrayLen(s int, nums []int) int {
 //     var sum int
@@ -76,8 +74,35 @@ func minSubArrayLen(target int, nums []int) int {
 //     }
 //     return y
 // }
+/*
+視窗法 定 left,right 為-1 0
+並計算left 到right數值為多少跟target比較，比target小則right向左移動 在計算
+*/
+func minSubArrayLen(target int, nums []int) int {
+	l, r := 0, 0
+	sum := 0
+	maxSub := 0
+	for r < len(nums) {
+		if sum < target {
+			sum = sum + nums[r]
+			r++
+		}
+		for sum >= target {
+
+			if maxSub > r-l || maxSub == 0 {
+				maxSub = r - l
+			}
+
+			sum = sum - nums[l]
+			l++
+		}
+
+	}
+	return maxSub
+}
+
 func main() {
 	a := []int{1, 2, 3, 4, 5}
 	// a := []int{1, 1, 1, 1, 1, 1, 1, 1}
-	minSubArrayLen(15, a)
+	minSubArrayLen(11, a)
 }

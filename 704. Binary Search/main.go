@@ -1,10 +1,7 @@
 package main
 
-import (
 // "fmt"s
 // "strconv"
-
-)
 
 /*
 easy
@@ -37,26 +34,43 @@ Explanation: 2 does not exist in nums so return -1
 // 	}
 // 	return -1
 // }
-func search(nums []int, target int) int {
-	left := 0
-	rights := len(nums) - 1
+// func search(nums []int, target int) int {
+// 	left := 0
+// 	rights := len(nums) - 1
 
-	for i := 0; i < len(nums); i++ {
-		mid := (rights-left)/2 + left
+//		for i := 0; i < len(nums); i++ {
+//			mid := (rights-left)/2 + left
+//			if nums[mid] == target {
+//				return mid
+//			}
+//			if nums[mid] < target {
+//				left++
+//			} else {
+//				rights--
+//			}
+//		}
+//		return -1
+//	}
+func search(nums []int, target int) int {
+	l, r := 0, len(nums)-1
+	for l <= r {
+		// left + (right - left) / 2
+		mid := (r + l) / 2
 		if nums[mid] == target {
 			return mid
-		}
-		if nums[mid] < target {
-			left++
+		} else if nums[mid] < target {
+			l = mid + 1
 		} else {
-			rights--
+			r = mid - 1
 		}
+
 	}
 	return -1
 }
 func main() {
 
 	num := []int{-1, 0, 3, 5, 9, 12} // 0
+	// num := []int{5} // 0
 	target := 9
 	search(num, target)
 }

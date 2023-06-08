@@ -19,25 +19,42 @@ Input: ransomNote = "aa", magazine = "aab"
 Output: true
 */
 
+// func canConstruct(ransomNote string, magazine string) bool {
+// 	t := make(map[int32]int)
+// 	ans := true
+// 	for _, i := range magazine {
+// 		t[i]++
+// 	}
+// 	for _, i := range ransomNote {
+// 		t[i]--
+// 		if t[i] < 0 {
+// 			ans = false
+// 		}
+// 	}
+
+//		return ans
+//	}
 func canConstruct(ransomNote string, magazine string) bool {
 	t := make(map[int32]int)
-	ans := true
+
 	for _, i := range magazine {
 		t[i]++
 	}
 	for _, i := range ransomNote {
-		t[i]--
-		if t[i] < 0 {
-			ans = false
+		_, ok := t[i]
+		if !ok || t[i] <= 0 {
+			return false
+		} else {
+			t[i]--
 		}
 	}
 
-	return ans
+	return true
 }
 
 func main() {
-	ransomNote := "aacc"
-	magazine := "aabb"
+	ransomNote := "aa"
+	magazine := "ab"
 	// words := ["bella","label","roller"]
 	canConstruct(ransomNote, magazine)
 

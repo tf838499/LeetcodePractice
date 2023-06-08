@@ -1,9 +1,7 @@
 package main
 
-import (
 // "fmt"
 // "strconv"
-)
 
 /*
 easy
@@ -23,53 +21,78 @@ Explanation: [4,9] is also accepted.
 1 <= nums1.length, nums2.length <= 1000
 0 <= nums1[i], nums2[i] <= 1000
 */
-func intersection(nums1 []int, nums2 []int) []int {
-	numlen := len(nums1)
-	var tmp []int
-	ans := []int{}
-	if numlen > len(nums2) {
-		tmp = nums1
-		nums1 = nums2
-		nums2 = tmp
-	}
-	set := make(map[int]bool)
-	for _, o := range nums2 {
-		if set[o] == true {
-			continue
-		} else {
-			set[o] = true
-		}
-	}
-	for _, o := range nums1 {
+// func intersection(nums1 []int, nums2 []int) []int {
+// 	numlen := len(nums1)
+// 	var tmp []int
+// 	ans := []int{}
+// 	if numlen > len(nums2) {
+// 		tmp = nums1
+// 		nums1 = nums2
+// 		nums2 = tmp
+// 	}
+// 	set := make(map[int]bool)
+// 	for _, o := range nums2 {
+// 		if set[o] == true {
+// 			continue
+// 		} else {
+// 			set[o] = true
+// 		}
+// 	}
+// 	for _, o := range nums1 {
 
-		if set[o] == true {
-			ans = append(ans, o)
-			set[o] = false
+//			if set[o] == true {
+//				ans = append(ans, o)
+//				set[o] = false
+//			}
+//		}
+//		return ans
+//	}
+func intersection(nums1 []int, nums2 []int) []int {
+	nums1Map := make(map[int]int)
+	nums2Map := make(map[int]int)
+	var ans []int
+	for _, i := range nums1 {
+		nums1Map[i]++
+	}
+	for _, i := range nums2 {
+		nums2Map[i]++
+	}
+	lenNum1 := len(nums1Map)
+	lenNUm2 := len(nums2Map)
+	if lenNUm2 > lenNum1 {
+		nums1Map, nums2Map = nums2Map, nums1Map
+	}
+	for k, _ := range nums1Map {
+		if nums1Map[k] > nums2Map[k] {
+			nums1Map[k] = nums2Map[k]
+		}
+		if nums1Map[k] != 0 {
+			ans = append(ans, k)
 		}
 	}
 	return ans
 }
 
-// func intersection(nums1 []int, nums2 []int) []int {
-//     mem := make([]int, 1001)
-//     for _, n := range nums1 {
-//         if mem[n] == 0 {
-//             mem[n]++
-//         }
-//     }
-//     for _, n := range nums2 {
-//         if mem[n] == 1 {
-//             mem[n]++
-//         }
-//     }
-//     result := []int{}
-//     for i, sum := range mem {
-//         if sum > 1 {
-//             result = append(result, i)
-//         }
-//     }
-//     return result
-// }
+//	func intersection(nums1 []int, nums2 []int) []int {
+//	    mem := make([]int, 1001)
+//	    for _, n := range nums1 {
+//	        if mem[n] == 0 {
+//	            mem[n]++
+//	        }
+//	    }
+//	    for _, n := range nums2 {
+//	        if mem[n] == 1 {
+//	            mem[n]++
+//	        }
+//	    }
+//	    result := []int{}
+//	    for i, sum := range mem {
+//	        if sum > 1 {
+//	            result = append(result, i)
+//	        }
+//	    }
+//	    return result
+//	}
 func main() {
 	numtest1_1 := []int{1, 2, 2, 1}
 	numtest1_2 := []int{2, 2}

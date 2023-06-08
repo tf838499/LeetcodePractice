@@ -1,9 +1,7 @@
 package main
 
-import (
 // "fmt"
 // "strconv"
-)
 
 /*
 Easy
@@ -28,29 +26,64 @@ Explanation:
 Input: n = 2
 Output: false
 */
+// func isHappy(n int) bool {
+// 	set := make(map[int]bool)
+// 	var remainder int
+// 	var quotient int
+// 	for n != 1 {
+// 		remainder = n % 10
+// 		quotient = n / 10
+// 		n = remainder * remainder
+// 		for quotient != 0 {
+// 			remainder = quotient % 10
+// 			quotient = quotient / 10
+// 			n += remainder * remainder
+// 		}
+// 		if set[n] == true {
+// 			return false
+// 		} else {
+// 			set[n] = true
+// 		}
+
+//		}
+//		return true
+//	}
 func isHappy(n int) bool {
-	set := make(map[int]bool)
-	var remainder int
-	var quotient int
-	for n != 1 {
-		remainder = n % 10
-		quotient = n / 10
-		n = remainder * remainder
+	m := make(map[int]bool)
+	for n != 1 && !m[n] {
+		m[n] = true
+		remainder := n % 10
+		quotient := n / 10
+		remainder = remainder * remainder
+		n = remainder
+
 		for quotient != 0 {
+
 			remainder = quotient % 10
 			quotient = quotient / 10
-			n += remainder * remainder
+			remainder = remainder * remainder
+			n = n + remainder
 		}
-		if set[n] == true {
-			return false
-		} else {
-			set[n] = true
-		}
-
 	}
-	return true
+	return n == 1
 }
 
+// func isHappy(n int) bool {
+// 	m := make(map[int]bool)
+// 	for n != 1 && !m[n] {
+// 		n, m[n] = getSum(n), true
+// 	}
+// 	return n == 1
+// }
+
+//	func getSum(n int) int {
+//		sum := 0
+//		for n > 0 {
+//			sum += (n % 10) * (n % 10)
+//			n = n / 10
+//		}
+//		return sum
+//	}
 func main() {
 	// numtest1_1 := 19
 	numtest1_2 := 2

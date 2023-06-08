@@ -1,10 +1,8 @@
 package main
 
-import (
 // "fmt"5
 // // "strconv"
 // "sort"
-)
 
 /*
 easy
@@ -24,27 +22,30 @@ Output: [4,9,9,49,121]
 
 */
 
-func sortedSquares(nums []int) []int {
-	numsLen := len(nums)
-	l, r := 0, numsLen-1
-	result := make([]int, numsLen)
-	for i := numsLen - 1; i >= 0; i-- {
-		lVal := nums[l] * nums[l]
-		rVal := nums[r] * nums[r]
-		if rVal > lVal {
-			result[i] = rVal
-			r--
-		} else {
-			result[i] = lVal
-			l++
-		}
-	}
+// func sortedSquares(nums []int) []int {
+// 	numsLen := len(nums)
+// 	l, r := 0, numsLen-1
+// 	result := make([]int, numsLen)
+// 	for i := numsLen - 1; i >= 0; i-- {
+// 		lVal := nums[l] * nums[l]
+// 		rVal := nums[r] * nums[r]
+// 		if rVal > lVal {
+// 			result[i] = rVal
+// 			r--
+// 		} else {
+// 			result[i] = lVal
+// 			l++
+// 		}
+// 	}
 
-	return result
+//		return result
+//	}
+func sortedSquares(nums []int) []int {
+
 }
 func main() {
 
-	input := []int{-7, -3, 2, 3, 11}
-
+	// input := []int{-7, -3, 2, 3, 11}
+	input := []int{-4, -1, 0, 3, 10}
 	sortedSquares(input)
 }
