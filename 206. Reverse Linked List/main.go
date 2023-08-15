@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 /*
 *
 Easy
@@ -18,55 +20,17 @@ type ListNode struct {
 	Next *ListNode
 }
 
-// 206
-// func reverseList(head *ListNode) *ListNode {
-// 	/*
-// 		ForwardNode : record pre node
-// 		CurrentNode : record next node
-// 		method		: [first head equal current ，then current node pass next node ，
-// 		then head next node directed forward node (reverse)，complete once reverse，go back first and continus reverse]
-// 	*/
-// 	var ForwardNode *ListNode
-// 	var CurrentNode *ListNode
-// 	CurrentNode = head
-
-// 	for CurrentNode != nil {
-// 		head = CurrentNode
-// 		CurrentNode = head.Next
-// 		head.Next = ForwardNode
-// 		ForwardNode = head
+// func reverseListRecursion(head, last *ListNode) *ListNode {
+// 	/* */
+// 	if last == nil {
+// 		return head
 // 	}
-// 	return head
+// 	temp := last.Next
+// 	last.Next = head
+// 	return reverseListRecursion(last, temp)
 // }
 // func reverseList(head *ListNode) *ListNode {
-//     if head == nil{
-// 		return nil
-// 	}
-// 	temp := head.Next
-// 	head.Next = nil
-// 	return reversePair(head, temp)
-// }
-
-//	func reversePair(last *ListNode, head *ListNode) *ListNode {
-//		if head == nil{
-//			return last
-//		}
-//		temp := head.Next
-//		head.Next = last
-//		return reversePair(head, temp)
-//	}
-func reverseListRecursion(head, last *ListNode) *ListNode {
-	/* */
-	if last == nil {
-		return head
-	}
-	temp := last.Next
-	last.Next = head
-	return reverseListRecursion(last, temp)
-}
-
-// func reverseList(head *ListNode) *ListNode {
-// 	if head == nil {
+//     if head == nil {
 // 		return head
 // 	}
 // 	var ans *ListNode
@@ -76,30 +40,25 @@ func reverseListRecursion(head, last *ListNode) *ListNode {
 // 	return ans
 // }
 
-//	func reverseList(head *ListNode) *ListNode {
-//		help(head, nil)
-//		return head
-//	}
-//
-func help(head *ListNode, pre *ListNode) *ListNode {
-	if head != nil {
-		head = head.Next
-		rever := help(head, head.Next)
-		pre = rever
-	}
-	return head
-}
-func helper(current *ListNode, prev *ListNode) *ListNode {
-	if current == nil {
-		return prev
-	}
-	next := current.Next
-	current.Next = prev
-	return helper(next, current)
-}
-
 func reverseList(head *ListNode) *ListNode {
-	return helper(head, nil)
+	return reverseListRecursion(head, nil)
+}
+func reverseListRecursion(head *ListNode, Last *ListNode) *ListNode {
+	var tmp *ListNode
+
+	if head.Next != nil {
+		if head.Next.Next != nil {
+			tmp = reverseListRecursion(head.Next.Next, head.Next)
+			head.Next, head.Next.Next = Last, head
+		}
+		// tmp = reverseListRecursion(head.Next.Next, head.Next)
+		// head.Next, head.Next.Next = Last, head
+		// fmt.Println(tmp)
+	} else if head.Next == nil {
+		head.Next = Last
+		return head
+	}
+	return tmp
 }
 func main() {
 	var HeadNode *ListNode = &ListNode{
@@ -119,10 +78,11 @@ func main() {
 	}
 
 	HeadNode.Next = SecondNode
-	SecondNode.Next = thirdNode
+	SecondNode.Next = nil
 	thirdNode.Next = Node4
 	Node4.Next = Node5
 	// outputMessage(HeadNode, "input : ")
-	reverseList(HeadNode)
+	p := reverseList(HeadNode)
+	fmt.Println(p)
 
 }
