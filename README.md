@@ -10,7 +10,7 @@
 
 - [x] 203. Remove Linked List Elements [Easy] [TwoPointer] | [Recursive]
 - [ ] 707. Design Linked List
-- [ ] 206. Reverse Linked List
+- [x] 206. Reverse Linked List
 - [x] 24. Swap Nodes in Pairs [Medium] [Recursive]
 - [x] 19. Remove Nth Node From End of List [Medium] [TwoPointer] | [Recursive]
 - [x] 160. Intersection of Two Linked Lists [Easy] [TwoPointer] [Slow&FastPointer]
@@ -30,8 +30,8 @@
 
 ### String
 
-- [ ] 344. Reverse String
-- [ ] 541. Reverse String II [Easy] [TwoPointer]
+- [x] 344. Reverse String [TwoPointer]
+- [x] 541. Reverse String II [Easy] [TwoPointer]
 - [ ] 151. Reverse Words in a String
 - [ ] 28. Implement strStr()
 - [ ] 459. Repeated Substring Pattern

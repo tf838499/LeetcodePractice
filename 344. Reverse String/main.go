@@ -1,9 +1,6 @@
 package main
 
-import (
-	"fmt"
-	// "strconv"
-)
+// "strconv"
 
 /*
 easy
@@ -20,23 +17,21 @@ Output: ["o","l","l","e","h"]
 Input: s = ["H","a","n","n","a","h"]
 Output: ["h","a","n","n","a","H"]
 */
-func reverseString(s []byte) {
-
-	for i := 0; i < len(s)/2; i++ {
-		s[i], s[len(s)-(i+1)] = s[len(s)-i-1], s[i]
-	}
-}
-
 // func reverseString(s []byte) {
 
 // 	for i := 0; i < len(s)/2; i++ {
-// 		tmp := s[i]
-// 		s[i],s[len(s)-i-1] = s[len(s)-i-1],s[i]
-// 		s[i] = s[len(s)-i-1]
-// 		s[len(s)-i-1] = tmp
-// 		fmt.Println(s[i])
+// 		s[i], s[len(s)-(i+1)] = s[len(s)-i-1], s[i]
 // 	}
 // }
+func reverseString(s []byte) {
+	l, r := 0, len(s)-1
+	for l < r {
+		s[l], s[r] = s[r], s[l]
+		l++
+		r--
+	}
+	return
+}
 func main() {
 	words := "Hannah"
 	// words := []byte{"H", "a", "n", "n", "a", "h"}

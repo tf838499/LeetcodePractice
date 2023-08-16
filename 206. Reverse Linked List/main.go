@@ -40,25 +40,31 @@ type ListNode struct {
 // 	return ans
 // }
 
-func reverseList(head *ListNode) *ListNode {
-	return reverseListRecursion(head, nil)
-}
-func reverseListRecursion(head *ListNode, Last *ListNode) *ListNode {
-	var tmp *ListNode
+// func reverseList(head *ListNode) *ListNode {
+// 	cur := head
+// 	var pre *ListNode
+// 	for cur != nil {
 
-	if head.Next != nil {
-		if head.Next.Next != nil {
-			tmp = reverseListRecursion(head.Next.Next, head.Next)
-			head.Next, head.Next.Next = Last, head
-		}
-		// tmp = reverseListRecursion(head.Next.Next, head.Next)
-		// head.Next, head.Next.Next = Last, head
-		// fmt.Println(tmp)
-	} else if head.Next == nil {
-		head.Next = Last
-		return head
+// 		tmp := cur.Next
+// 		cur.Next = pre
+// 		pre = cur
+// 		cur = tmp
+// 	}
+// 	return pre
+// }
+func reverseList(head *ListNode) *ListNode {
+
+	return reverseListRecursion(nil, head)
+}
+func reverseListRecursion(pre *ListNode, cur *ListNode) *ListNode {
+	if cur == nil {
+		return pre
 	}
-	return tmp
+	tmp := cur.Next
+	cur.Next = pre
+	pre = cur
+	// reverseListRecursion(pre, tmp)
+	return reverseListRecursion(pre, tmp)
 }
 func main() {
 	var HeadNode *ListNode = &ListNode{
@@ -78,7 +84,7 @@ func main() {
 	}
 
 	HeadNode.Next = SecondNode
-	SecondNode.Next = nil
+	SecondNode.Next = thirdNode
 	thirdNode.Next = Node4
 	Node4.Next = Node5
 	// outputMessage(HeadNode, "input : ")
