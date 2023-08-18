@@ -1,9 +1,8 @@
 package main
 
-import (
-	"fmt"
-	// "strconv"
-)
+import "strings"
+
+// "strconv"
 
 /*
 easy
@@ -26,95 +25,93 @@ Input: s = "abcabcabcabc"
 Output: true
 Explanation: It is the substring "abc" four times or the substring "abcabc" twice.
 */
+
 // func repeatedSubstringPattern(s string) bool {
-// 	t := s + s
-// 	t = t[1 : len(t)-1]
-// 	for i := 0; i < len(t); i++ {
-// 		if i+len(s) > len(t) {
-// 			break
+// loop:
+// 	// i: repeat times
+// 	//  case abcabc or abcabcabc , Confirm how many can be split sub(find common factor),
+// 	// bc s len is even number if one char is differect or miss can not
+// 	for i := 2; i <= len(s); i++ {
+// 		if len(s)%i != 0 {
+// 			continue
 // 		}
-// 		if s == t[i:i+len(s)] {
-// 			return true
+// 		subSize := len(s) / i
+// 		for j := 0; j < subSize; j++ {
+// 			for k := 1; k < i; k++ {
+// 				fmt.Println(string(s[subSize*k+j]))
+// 				if s[subSize*k+j] != s[j] {
+// 					continue loop // similar breakpoint ,bc don't keep j loop
+// 				}
+// 			}
 // 		}
+// 		return true
 // 	}
 // 	return false
 // }
 
+// 前缀表（不减一）的代码实现
 // func repeatedSubstringPattern(s string) bool {
-
-//     // helper: returns all indexes of a rune in string
-//     // use it to find indexes of starting char
-//     indexesOf := func(r rune) []int{
-//         idxs := []int{}
-//         for i, c := range s { if c == r { idxs = append(idxs, i)} }
-//         return idxs
-//     }
-
-//     //helper: returns true if s1 and s2 are equal
-//     areSame := func(s1, s2 string) bool {
-//         if len(s1) != len(s2) {return false}
-//         i := 0
-//         for ; i < len(s1); i++ {
-//             if s1[i] != s2[i] {break}
-//         }
-//         return i == len(s1)
-//     }
-
-//     // helper: checks if we have a repeating substring of length lss
-//     hasSubstringOfLen := func(x int) bool {
-//         ls := len(s)
-//         if (ls % x) != 0 {return false}
-
-//         s0 := s[:x]
-//         for i := x; i < ls; i += x {
-//             si := s[i:i+x]
-//             if !areSame(s0, si) {return false}
-//         }
-
-//         return true
-//     }
-
-//     rs := []rune(s)
-//     c := rs[0]
-//     idxs := indexesOf(c)
-//     // fmt.Println(idxs)
-//     // skip the first index as it is 0 for starting char
-//     for _, ix := range idxs[1:] {
-//         if hasSubstringOfLen(ix) { return true }
-//     }
-//     return false
+// 	n := len(s)
+// 	if n == 0 {
+// 		return false
+// 	}
+// 	j := 0
+// 	next := make([]int, n)
+// 	next[0] = j
+// 	for i := 1; i < n; i++ {
+// 		for j > 0 && s[i] != s[j] {
+// 			j = next[j-1]
+// 		}
+// 		if s[i] == s[j] {
+// 			j++
+// 		}
+// 		next[i] = j
+// 	}
+// 	// next[n-1]  最长相同前后缀的长度
+// 	if next[n-1] != 0 && n%(n-next[n-1]) == 0 {
+// 		return true
+// 	}
+// 	return false
 // }
 
+// // 这里使用了前缀表统一减一的实现方式
+// func repeatedSubstringPattern(s string) bool {
+// 	n := len(s)
+// 	if n == 0 {
+// 		return false
+// 	}
+// 	next := make([]int, n)
+// 	j := -1
+// 	next[0] = j
+// 	for i := 1; i < n; i++ {
+// 		for j >= 0 && s[i] != s[j+1] {
+// 			j = next[j]
+// 		}
+// 		if s[i] == s[j+1] {
+// 			j++
+// 		}
+// 		next[i] = j
+// 	}
+// 	// next[n-1]+1 最长相同前后缀的长度
+// 	if next[n-1] != -1 && n%(n-(next[n-1]+1)) == 0 {
+// 		return true
+// 	}
+// 	return false
+// }
 func repeatedSubstringPattern(s string) bool {
-loop:
-	// i: repeat times
-	//  case abcabc or abcabcabc , Confirm how many can be split sub(find common factor),
-	// bc s len is even number if one char is differect or miss can not
-	for i := 2; i <= len(s); i++ {
-		if len(s)%i != 0 {
-			continue
-		}
-		subSize := len(s) / i
-		for j := 0; j < subSize; j++ {
-			for k := 1; k < i; k++ {
-				fmt.Println(string(s[subSize*k+j]))
-				if s[subSize*k+j] != s[j] {
-					continue loop // similar breakpoint ,bc don't keep j loop
-				}
-			}
-		}
-		return true
-	}
-	return false
-}
 
+	size := len(s)
+	sFold := s[1:size] + s[0:size-1]
+
+	return strings.Contains(sFold, s)
+}
 func main() {
 	// s := "bb"
 	// repeatsedSubstringPattern(s)
-	s := "bba"
+	s := "abcabc"
 	repeatedSubstringPattern(s)
 	// s = "abcabcabc"
 	// repeatedSubstringPattern(s)
-	s = "abcdeabcdeabcdeabcdeabcdeabcdeabcde"
-	repeatedSubstringPattern(s)
+	// s = "abcdeabcdeabcdeabcdeabcdeabcdeabcde"
+	// repeatedSubstringPattern(s)
 }

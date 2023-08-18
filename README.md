@@ -32,8 +32,8 @@
 
 - [x] 344. Reverse String [TwoPointer]
 - [x] 541. Reverse String II [Easy] [TwoPointer]
-- [ ] 151. Reverse Words in a String
-- [ ] 28. Implement strStr()
+- [x] 151. Reverse Words in a String
+- [x] 28. Implement strStr()
 - [ ] 459. Repeated Substring Pattern
 
 ### Two pointer

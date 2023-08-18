@@ -1,12 +1,10 @@
 package main
 
-import (
 // "fmt"
 // "strconv"
-)
 
 /*
-Medium
+Easy
 string
 done
 
