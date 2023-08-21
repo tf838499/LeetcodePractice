@@ -1,7 +1,5 @@
 package main
 
-import "strings"
-
 // "fmt"
 // "strconv"
 
@@ -75,40 +73,88 @@ Explanation: You need to reduce multiple spaces between two words to a single sp
 // 	return string(p)
 // }
 
+// func reverseWords(s string) string {
+
+// 	p := strings.Split(s, " ")
+// 	ans := ""
+// 	for i := len(p) - 1; i >= 0; i-- {
+// 		if p[i] != "" {
+// 			if ans == "" {
+// 				ans = p[i]
+// 			} else {
+// 				ans = ans + " " + p[i]
+// 			}
+// 		}
+// 	}
+// 	return ans
+// }
+
+func reverseWords(s string) string {
+	slow, fast := len(s), len(s)-1
+	out := []rune{}
+	for fast >= 0 {
+		if s[fast] == ' ' {
+			if len(out) > 0 {
+				out = append(out, ' ')
+			}
+			out = append(out, []rune(s[fast+1:slow])...)
+			for s[fast] == ' ' {
+				fast--
+				slow = fast + 1
+
+			}
+			continue
+			// slow = fast
+		}
+		// fast--
+		if fast == 0 && s[fast] != ' ' {
+			if len(out) > 0 {
+				out = append(out, ' ')
+			}
+			out = append(out, []rune(s[fast:slow])...)
+		}
+		fast--
+	}
+	return string(out)
+}
+
 func reverseWords(s string) string {
 
-	p := strings.Split(s, " ")
-	ans := ""
-	for i := len(p) - 1; i >= 0; i-- {
-		if p[i] != "" {
-			if ans == "" {
-				ans = p[i]
-			} else {
-				ans = ans + " " + p[i]
+	out := []rune{}
+
+	lastIndex := -1
+
+	for i := len(s) - 1; i >= 0; i-- {
+		if s[i] != ' ' {
+			if lastIndex == -1 {
+				lastIndex = i
+			}
+		} else {
+			if lastIndex != -1 {
+
+				if len(out) > 0 {
+					out = append(out, ' ')
+				}
+				out = append(out, []rune(s[i+1:lastIndex+1])...)
+				lastIndex = -1
 			}
 		}
 	}
-	return ans
-}
 
-// func reverseWords(s string) string {
-//     i, n, res := 0, len(s), ""
-//     for i < n {
-//         for i < n && s[i] == ' ' { i++ }
-//         if i == n { break }
-//         j := i
-//         for j < n && s[j] != ' ' { j++ }
-//         if len(res) == 0 {
-//             res = s[i : j]
-//         } else {
-//             res = s[i : j] + " " + res
-//         }
-//         i = j + 1
-//     }
-//     return res
-// }
+	if lastIndex != -1 {
+		if len(out) > 0 {
+			out = append(out, ' ')
+		}
+		out = append(out, []rune(s[0:lastIndex+1])...)
+	}
+
+	return string(out)
+}
 func main() {
-	quet := "a good  example"
-	// quet := "  hello world  "
+	quet := "  hello world  "
+	reverseWords(quet)
+	quet = "the sky is blue"
+	reverseWords(quet)
+	quet = "a good   example"
 	reverseWords(quet)
 }

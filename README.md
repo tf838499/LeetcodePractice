@@ -34,12 +34,12 @@
 - [x] 541. Reverse String II [Easy] [TwoPointer]
 - [x] 151. Reverse Words in a String
 - [x] 28. Implement strStr()
-- [ ] 459. Repeated Substring Pattern
+- [x] 459. Repeated Substring Pattern
 
 ### Two pointer
 
-- [ ] 27. Remove Element : array
-- [ ] 344. Reverse String : string
+- [x] 27. Remove Element : array
+- [x] 344. Reverse String : string
 - [ ] 151. Reverse Words in a String : string
 - [ ] 206. Reverse Linked List : linked
 - [ ] 19. Remove Nth Node From End of List : linked

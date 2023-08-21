@@ -28,19 +28,19 @@ Explanation: Your function should return k = 5, with the first five elements of 
 Note that the five elements can be returned in any order.
 It does not matter what you leave beyond the returned k (hence they are underscores).
 */
-func removeElement(nums []int, val int) int {
-	l, r := 0, len(nums)-1
+// func removeElement(nums []int, val int) int {
+// 	l, r := 0, len(nums)-1
 
-	for l <= r {
-		if nums[l] == val {
-			nums[l], nums[r] = nums[r], nums[l]
-			r--
-		} else {
-			l++
-		}
-	}
-	return l
-}
+// 	for l <= r {
+// 		if nums[l] == val {
+// 			nums[l], nums[r] = nums[r], nums[l]
+// 			r--
+// 		} else {
+// 			l++
+// 		}
+// 	}
+// 	return l
+// }
 
 // func removeElement(nums []int, val int) int {
 // 	var start = 0
@@ -88,6 +88,20 @@ func removeElement(nums []int, val int) int {
 // 	return otherIdx
 
 // }
+func removeElement(nums []int, val int) int {
+	l, r := 0, len(nums)-1
+
+	for l < r {
+		if nums[l] == val {
+			nums[l], nums[r] = nums[r], nums[l]
+			r--
+		} else {
+			l++
+		}
+		// l++
+	}
+	return l
+}
 
 func main() {
 	// hay := "mississippi"
