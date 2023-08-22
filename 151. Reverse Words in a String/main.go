@@ -89,66 +89,51 @@ Explanation: You need to reduce multiple spaces between two words to a single sp
 // 	return ans
 // }
 
+// func reverseWords(s string) string {
+// 	slow, fast := len(s), len(s)-1
+// 	out := []rune{}
+// 	for fast >= 0 {
+// 		if s[fast] == ' ' {
+// 			if s[fast:slow] != " " {
+// 				if len(out) != 0 {
+// 					out = append(out, ' ')
+// 				}
+// 				out = append(out, []rune(s[fast+1:slow])...)
+// 			}
+// 			slow = fast
+// 		}
+// 		fast--
+// 	}
+// 	fast = 0
+// 	if s[fast:slow] != " " && s[fast:slow] != "" {
+// 		if len(out) != 0 {
+// 			out = append(out, ' ')
+// 		}
+// 		out = append(out, []rune(s[fast:slow])...)
+// 	}
+// 	return string(out)
+// }
 func reverseWords(s string) string {
-	slow, fast := len(s), len(s)-1
-	out := []rune{}
-	for fast >= 0 {
-		if s[fast] == ' ' {
-			if len(out) > 0 {
-				out = append(out, ' ')
-			}
-			out = append(out, []rune(s[fast+1:slow])...)
-			for s[fast] == ' ' {
-				fast--
-				slow = fast + 1
-
-			}
-			continue
-			// slow = fast
+	i, n, res := 0, len(s), ""
+	for i < n {
+		for i < n && s[i] == ' ' {
+			i++
 		}
-		// fast--
-		if fast == 0 && s[fast] != ' ' {
-			if len(out) > 0 {
-				out = append(out, ' ')
-			}
-			out = append(out, []rune(s[fast:slow])...)
+		if i == n {
+			break
 		}
-		fast--
-	}
-	return string(out)
-}
-
-func reverseWords(s string) string {
-
-	out := []rune{}
-
-	lastIndex := -1
-
-	for i := len(s) - 1; i >= 0; i-- {
-		if s[i] != ' ' {
-			if lastIndex == -1 {
-				lastIndex = i
-			}
+		j := i
+		for j < n && s[j] != ' ' {
+			j++
+		}
+		if len(res) == 0 {
+			res = s[i:j]
 		} else {
-			if lastIndex != -1 {
-
-				if len(out) > 0 {
-					out = append(out, ' ')
-				}
-				out = append(out, []rune(s[i+1:lastIndex+1])...)
-				lastIndex = -1
-			}
+			res = s[i:j] + " " + res
 		}
+		i = j + 1
 	}
-
-	if lastIndex != -1 {
-		if len(out) > 0 {
-			out = append(out, ' ')
-		}
-		out = append(out, []rune(s[0:lastIndex+1])...)
-	}
-
-	return string(out)
+	return res
 }
 func main() {
 	quet := "  hello world  "
