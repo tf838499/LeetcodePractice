@@ -53,19 +53,29 @@ type ListNode struct {
 // 	return pre
 // }
 func reverseList(head *ListNode) *ListNode {
-
-	return reverseListRecursion(nil, head)
-}
-func reverseListRecursion(pre *ListNode, cur *ListNode) *ListNode {
-	if cur == nil {
-		return pre
+	var prev *ListNode
+	var late *ListNode
+	for head != nil {
+		prev = head.Next
+		head.Next = late
+		late = head
+		head = prev
+		// late =
 	}
-	tmp := cur.Next
-	cur.Next = pre
-	pre = cur
-	// reverseListRecursion(pre, tmp)
-	return reverseListRecursion(pre, tmp)
+
+	return late
 }
+
+// func reverseListRecursion(pre *ListNode, cur *ListNode) *ListNode {
+// 	if cur == nil {
+// 		return pre
+// 	}
+// 	tmp := cur.Next
+// 	cur.Next = pre
+// 	pre = cur
+// 	// reverseListRecursion(pre, tmp)
+// 	return reverseListRecursion(pre, tmp)
+// }
 func main() {
 	var HeadNode *ListNode = &ListNode{
 		Val: 1.0,

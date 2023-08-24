@@ -40,7 +40,7 @@
 
 - [x] 27. Remove Element : array
 - [x] 344. Reverse String : string
-- [ ] 151. Reverse Words in a String : string
+- [x] 151. Reverse Words in a String : string
 - [ ] 206. Reverse Linked List : linked
 - [ ] 19. Remove Nth Node From End of List : linked
 - [ ] 160. Intersection of Two Linked Lists : linked
