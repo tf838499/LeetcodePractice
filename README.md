@@ -47,6 +47,8 @@
 - [ ] 142. Linked List Cycle II : linked
 - [ ] 15. 3Sum
 - [ ] 18. 4Sum
+- [x] 2807. Insert Greatest Common Divisors in Linked List
+
 
 ### Stack & Queue
 
