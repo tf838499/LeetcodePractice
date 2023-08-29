@@ -41,9 +41,9 @@
 - [x] 27. Remove Element : array
 - [x] 344. Reverse String : string
 - [x] 151. Reverse Words in a String : string
-- [ ] 206. Reverse Linked List : linked
-- [ ] 19. Remove Nth Node From End of List : linked
-- [ ] 160. Intersection of Two Linked Lists : linked
+- [x] 206. Reverse Linked List : linked
+- [x] 19. Remove Nth Node From End of List : linked
+- [] 160. Intersection of Two Linked Lists : linked
 - [ ] 142. Linked List Cycle II : linked
 - [ ] 15. 3Sum
 - [ ] 18. 4Sum

@@ -19,55 +19,47 @@ type ListNode struct {
 	Next *ListNode
 }
 
-// 19
 // func removeNthFromEnd(head *ListNode, n int) *ListNode {
-// 	if head == nil || head.Next == nil {
-// 		return nil
+// 	if head == nil {
+// 		return head
 // 	}
-// 	tmp := head
-// 	prev_n := 1
-// 	var prev *ListNode
-// 	// prev := head
-// 	for head != nil {
-// 		if head.Next != nil {
-// 			if prev_n >= n {
-// 				if prev == nil {
-// 					prev = tmp
-// 				} else {
-// 					prev = prev.Next
-// 				}
-// 			} else {
-// 				prev_n++
-// 			}
-// 			head = head.Next
-// 		} else if prev == nil {
-// 			tmp = tmp.Next
-// 			break
-// 		} else {
-// 			prev.Next = prev.Next.Next
-// 			break
-// 		}
+// 	slow, fast := head, head
+// 	for i := 0; i < n; i++ {
+// 		fast = fast.Next
+// 	}
 
+// 	for fast != nil {
+// 		fast = fast.Next
+// 		slow = slow.Next
 // 	}
-// 	return tmp
+// 	slow.Next = slow.Next.Next
+// 	return head
 // }
 
 func removeNthFromEnd(head *ListNode, n int) *ListNode {
-	if head == nil {
-		return head
-	}
-	dumy := &ListNode{Next: head}
-	slow, first := dumy, dumy
 
-	for i := 0; i <= n; i++ {
-		first = first.Next
+	dummyHead := &ListNode{-1, head}
+
+	cur, prevOfRemoval := dummyHead, dummyHead
+
+	for cur.Next != nil {
+
+		// n step delay for prevOfRemoval
+		if n <= 0 {
+			prevOfRemoval = prevOfRemoval.Next
+		}
+
+		cur = cur.Next
+
+		n -= 1
 	}
-	for first != nil {
-		first = first.Next
-		slow = slow.Next
-	}
-	slow.Next = slow.Next.Next
-	return dumy
+
+	// Remove the N-th node from end of list
+	nthNode := prevOfRemoval.Next
+	prevOfRemoval.Next = nthNode.Next
+
+	return dummyHead.Next
+
 }
 func main() {
 
