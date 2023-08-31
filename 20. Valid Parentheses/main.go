@@ -1,9 +1,6 @@
 package main
 
-import (
-	"fmt"
-	// "strconv"
-)
+// "strconv"
 
 /*
 Easy
@@ -26,33 +23,51 @@ Output: true
 Input: s = "(]"
 Output: false
 */
+// func isValid(s string) bool {
+
+// 	parens := map[rune]rune{
+// 		')': '(',
+// 		'}': '{',
+// 		']': '[',
+// 	}
+// 	if len(s)%2 != 0 {
+// 		return false
+// 	}
+
+// 	stack := make([]int32, 0)
+
+// 	for _, j := range []rune(s) {
+// 		if len(stack) == 0 {
+// 			stack = append(stack, j)
+// 			continue
+// 		}
+
+// 		if stack[len(stack)-1] != parens[j] {
+// 			stack = append(stack, j)
+// 		} else {
+// 			stack = stack[0 : len(stack)-1]
+// 		}
+
+// 	}
+
+// 	return len(stack) == 0
+// }
 func isValid(s string) bool {
 
+	stack := []rune{}
 	parens := map[rune]rune{
 		')': '(',
 		'}': '{',
 		']': '[',
 	}
-	if len(s)%2 != 0 {
-		return false
-	}
-
-	stack := make([]int32, 0)
-
-	for _, j := range []rune(s) {
-		if len(stack) == 0 {
-			stack = append(stack, j)
-			continue
-		}
-
-		if stack[len(stack)-1] != parens[j] {
-			stack = append(stack, j)
+	for _, i := range s {
+		if len(stack) == 0 || parens[i] != stack[len(stack)-1] {
+			stack = append(stack, i)
 		} else {
 			stack = stack[0 : len(stack)-1]
 		}
 
 	}
-
 	return len(stack) == 0
 }
 func main() {
