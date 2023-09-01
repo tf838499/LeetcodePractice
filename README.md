@@ -54,8 +54,8 @@
 
 - [ ] 232. Implement Queue using Stacks
 - [ ] 225. Implement Stack using Queues
-- [ ] 20. Valid Parentheses
-- [ ] 1047. Remove All Adjacent Duplicates In String
+- [x] 20. Valid Parentheses
+- [x] 1047. Remove All Adjacent Duplicates In String
 - [ ] 150. Evaluate Reverse Polish Notation
 - [ ] 239. Sliding Window Maximum
 - [ ] 347. Top K Frequent Elements

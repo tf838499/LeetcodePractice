@@ -1,9 +1,7 @@
 package main
 
-import (
 // "fmt"
 // "strconv"
-)
 
 /*
 stack
@@ -28,13 +26,25 @@ The result of this move is that the string is "aaca", of which only "aa" is poss
 Input: s = "azxxzy"
 Output: "ay"
 */
+// func removeDuplicates(s string) string {
+// 	stack := make([]byte, 0)
+// 	for i := 0; i < len(s); i++ {
+// 		stack = append(stack, s[i])
+// 		for len(stack) >= 2 && stack[len(stack)-1] == stack[len(stack)-2] {
+// 			stack = stack[:len(stack)-2]
+// 		}
+// 	}
+// 	return string(stack)
+// }
 func removeDuplicates(s string) string {
-	stack := make([]byte, 0)
-	for i := 0; i < len(s); i++ {
-		stack = append(stack, s[i])
-		for len(stack) >= 2 && stack[len(stack)-1] == stack[len(stack)-2] {
-			stack = stack[:len(stack)-2]
+	stack := []rune{}
+	for _, i := range s {
+		if len(stack) == 0 || stack[len(stack)-1] != i {
+			stack = append(stack, i)
+		} else {
+			stack = stack[0 : len(stack)-1]
 		}
+
 	}
 	return string(stack)
 }
