@@ -1,10 +1,7 @@
 package main
 
-import (
-	"fmt"
-	// "strconv"
-	// "strings"
-)
+// "strconv"
+// "strings"
 
 /*
 Easy
@@ -25,18 +22,26 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+// func inorderTraversal(root *TreeNode) []int {
+// 	ans := []int{}
+// 	if root != nil {
+// 		ans = append(ans, inorderTraversal(root.Left)...)
+// 		ans = append(ans, root.Val)
+// 		// ans = append(ans, preorderTraversal(root.Left)...)
+// 		ans = append(ans, inorderTraversal(root.Right)...)
+// 		// preorderTraversal(root.Right)
+// 	}
+// 	return ans
+// }
 func inorderTraversal(root *TreeNode) []int {
 	ans := []int{}
 	if root != nil {
 		ans = append(ans, inorderTraversal(root.Left)...)
 		ans = append(ans, root.Val)
-		// ans = append(ans, preorderTraversal(root.Left)...)
 		ans = append(ans, inorderTraversal(root.Right)...)
-		// preorderTraversal(root.Right)
 	}
 	return ans
 }
-
 func main() {
 
 	var Node3 *TreeNode = &TreeNode{

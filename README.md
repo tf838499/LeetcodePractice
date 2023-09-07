@@ -59,13 +59,12 @@
 - [x] 150. Evaluate Reverse Polish Notation
 - [x] 239. Sliding Window Maximum
 - [ ] 347. Top K Frequent Elements
-- [ ] 18. 4Sum
-- [ ] 18. 4Sum
+
 
 ### Binary tree
 
-- [ ] 144. Binary Tree Preorder Traversal
-- [ ] 145. Binary Tree Postorder Traversal
+- [x] 144. Binary Tree Preorder Traversal
+- [x] 145. Binary Tree Postorder Traversal
 - [ ] 94. Binary Tree Inorder Traversal
 - [ ] 226. Invert Binary Tree
 - [ ] 101. Symmetric Tree

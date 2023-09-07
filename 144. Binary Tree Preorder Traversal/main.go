@@ -1,10 +1,10 @@
 package main
 
-import (
+import "fmt"
+
 // "fmt"
 // "strconv"
 // "strings"
-)
 
 /*
 Easy
@@ -26,27 +26,38 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+// func preorderTraversal(root *TreeNode) []int {
+// 	ans := []int{}
+// 	if root != nil {
+// 		ans = append(ans, root.Val)
+// 		ans = append(ans, preorderTraversal(root.Left)...)
+// 		ans = append(ans, preorderTraversal(root.Right)...)
+// 		// preorderTraversal(root.Right)
+// 	}
+// 	return ans
+// }
 func preorderTraversal(root *TreeNode) []int {
 	ans := []int{}
-	if root != nil {
-		ans = append(ans, root.Val)
-		ans = append(ans, preorderTraversal(root.Left)...)
-		ans = append(ans, preorderTraversal(root.Right)...)
-		// preorderTraversal(root.Right)
+	if root == nil {
+		return ans
 	}
+	ans = append(ans, root.Val)
+	ans = append(ans, preorderTraversal(root.Left)...)
+	ans = append(ans, preorderTraversal(root.Right)...)
+
 	return ans
 }
-
 func main() {
 
 	var Node3 *TreeNode = &TreeNode{
-		Val: 1.0,
+		Val: 3.0,
 	}
 	var Node2 *TreeNode = &TreeNode{
-		Val: 1.0, Left: Node3,
+		Val: 2.0, Left: Node3,
 	}
 	var Node1 *TreeNode = &TreeNode{
 		Val: 1.0, Right: Node2,
 	}
-	preorderTraversal(Node1)
+	p := preorderTraversal(Node1)
+	fmt.Println(p)
 }
