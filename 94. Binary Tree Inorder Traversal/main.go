@@ -33,25 +33,49 @@ type TreeNode struct {
 // 	}
 // 	return ans
 // }
+// func inorderTraversal(root *TreeNode) []int {
+// 	ans := []int{}
+// 	if root != nil {
+// 		ans = append(ans, inorderTraversal(root.Left)...)
+// 		ans = append(ans, root.Val)
+// 		ans = append(ans, inorderTraversal(root.Right)...)
+// 	}
+// 	return ans
+// }
 func inorderTraversal(root *TreeNode) []int {
 	ans := []int{}
-	if root != nil {
-		ans = append(ans, inorderTraversal(root.Left)...)
-		ans = append(ans, root.Val)
-		ans = append(ans, inorderTraversal(root.Right)...)
+	tmp := []*TreeNode{}
+	// if root != nil && root.Right != nil {
+	// 	tmp = append(tmp, root.Right)
+	// }
+	for {
+		if root.Right != nil {
+			tmp = append(tmp, root.Right)
+		}
+		tmp = append(tmp, root)
+		if root.Left != nil {
+			tmp = append(tmp, root.Left)
+		}
+		root = tmp[len(tmp)-1]
+		if root.Left == nil && root.Right == nil {
+			ans = append(ans, root.Val)
+			tmp = tmp[0 : len(tmp)-1]
+		}
+		tmp = tmp[0 : len(tmp)-1]
+
 	}
-	return ans
 }
 func main() {
 
 	var Node3 *TreeNode = &TreeNode{
-		Val: 1.0,
+		Val: 3.0,
 	}
+
 	var Node2 *TreeNode = &TreeNode{
-		Val: 1.0, Left: Node3,
+		Val: 2.0,
 	}
 	var Node1 *TreeNode = &TreeNode{
-		Val: 1.0, Right: Node2,
+		Val: 1.0, Left: Node2, Right: Node3,
 	}
 	inorderTraversal(Node1)
 }

@@ -36,15 +36,33 @@ type TreeNode struct {
 // 	}
 // 	return ans
 // }
+// func preorderTraversal(root *TreeNode) []int {
+// 	ans := []int{}
+// 	if root == nil {
+// 		return ans
+// 	}
+// 	ans = append(ans, root.Val)
+// 	ans = append(ans, preorderTraversal(root.Left)...)
+// 	ans = append(ans, preorderTraversal(root.Right)...)
+// 	return ans
+// }
 func preorderTraversal(root *TreeNode) []int {
 	ans := []int{}
-	if root == nil {
-		return ans
+	queue := []*TreeNode{}
+	if root != nil {
+		queue = append(queue, root)
 	}
-	ans = append(ans, root.Val)
-	ans = append(ans, preorderTraversal(root.Left)...)
-	ans = append(ans, preorderTraversal(root.Right)...)
-
+	for len(queue) > 0 {
+		ans = append(ans, root.Val)
+		if root.Right != nil {
+			queue = append(queue, root.Right)
+		}
+		if root.Left != nil {
+			queue = append(queue, root.Left)
+		}
+		root = queue[len(queue)-1]
+		queue = queue[0 : len(queue)-1]
+	}
 	return ans
 }
 func main() {
