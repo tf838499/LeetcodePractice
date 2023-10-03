@@ -42,28 +42,40 @@ type TreeNode struct {
 // 	}
 // 	return ans
 // }
-func inorderTraversal(root *TreeNode) []int {
-	ans := []int{}
-	tmp := []*TreeNode{}
-	// if root != nil && root.Right != nil {
-	// 	tmp = append(tmp, root.Right)
-	// }
-	for {
-		if root.Right != nil {
-			tmp = append(tmp, root.Right)
-		}
-		tmp = append(tmp, root)
-		if root.Left != nil {
-			tmp = append(tmp, root.Left)
-		}
-		root = tmp[len(tmp)-1]
-		if root.Left == nil && root.Right == nil {
-			ans = append(ans, root.Val)
-			tmp = tmp[0 : len(tmp)-1]
-		}
-		tmp = tmp[0 : len(tmp)-1]
+// func inorderTraversal(root *TreeNode) []int {
+// 	ans := []int{}
+// 	tmp := []*TreeNode{}
 
+// 	if root.Left == nil {
+// 		ans = append(ans, root.Val)
+// 		tmp = tmp[:len(tmp)-1]
+// 		tmp = append(tmp, root.Right)
+// 	}
+// 	if root.Left != nil {
+// 		tmp = append(tmp, root)
+// 		root = root.Left
+// 	}
+
+// 	return ans
+// }
+func inorderTraversal(root *TreeNode) []int {
+	if root == nil {
+		return nil
 	}
+	res := make([]int, 0)
+	stack := make([]*TreeNode, 0)
+
+	for root != nil || len(stack) > 0 {
+		for root != nil {
+			stack = append(stack, root)
+			root = root.Left
+		}
+		root = stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+		res = append(res, root.Val)
+		root = root.Right
+	}
+	return res
 }
 func main() {
 
