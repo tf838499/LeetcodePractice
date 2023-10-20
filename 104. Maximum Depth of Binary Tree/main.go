@@ -1,11 +1,9 @@
 package main
 
-import (
 // "fmt"
 // "strconv"
 // "strings"
 // "math"
-)
 
 /*
 easy
@@ -25,44 +23,22 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+// Given the root of a binary tree, return its maximum depth.
+
+// A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
 /* recursive */
 func maxDepth(root *TreeNode) int {
-	// ans := 0
 	if root == nil {
 		return 0
 	}
-	// ans = ans + 1
-	n1 := maxDepth(root.Left)
-	n2 := maxDepth(root.Right)
-
-	if n1 > n2 {
-		return n1 + 1
+	left := maxDepth(root.Left)
+	right := maxDepth(root.Right)
+	if left > right {
+		return left + 1
+	} else {
+		return right + 1
 	}
-	return n2 + 1
 }
-
-/* stack */
-// func maxDepth(root *TreeNode) int {
-// 	ans := 0
-// 	if root == nil {
-// 		return ans
-// 	}
-// 	stack := []*TreeNode{root}
-
-// 	for len(stack) != 0 {
-// 		for _, p := range stack {
-// 			stack = stack[1:]
-// 			if p.Right != nil {
-// 				stack = append(stack, p.Right)
-// 			}
-// 			if p.Left != nil {
-// 				stack = append(stack, p.Left)
-// 			}
-// 		}
-// 		ans++
-// 	}
-// 	return ans
-// }
 func main() {
 	var Node7 *TreeNode = &TreeNode{
 		Val: 3.0,

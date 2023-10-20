@@ -68,8 +68,8 @@
 - [x] 94. Binary Tree Inorder Traversal
 - [x] 226. Invert Binary Tree
 - [x] 101. Symmetric Tree
-- [ ] 104. Maximum Depth of Binary Tree
-- [ ] 111. Minimum Depth of Binary Tree
+- [x] 104. Maximum Depth of Binary Tree
+- [x] 111. Minimum Depth of Binary Tree
 - [ ] 222. Count Complete Tree Nodes
 - [ ] 110. Balanced Binary Tree
 - [ ] 257. Binary Tree Paths
