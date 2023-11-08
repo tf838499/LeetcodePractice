@@ -1,11 +1,9 @@
 package main
 
-import (
 // "fmt"
 // "strconv"
 // "strings"
 // "math"
-)
 
 /*
 Easy
@@ -24,80 +22,69 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-func isBalanced(root *TreeNode) (ans bool) {
+func isBalanced(root *TreeNode) bool {
+	res, _ := dfs(root)
+	return res
+}
+func dfs(root *TreeNode) (bool, int) {
 	if root == nil {
-		return true
+		return true, 0
 	}
-	depth := 0
-	// NoChild := 0
-	stack := []*TreeNode{root}
-	for len(stack) != 0 {
-		for _, p := range stack {
-			stack = stack[1:]
-			if p.Left != nil {
-				stack = append(stack, p.Left)
-			} else if depth < 2 {
-				depth = 0
-				depth++
-			}
-			if p.Right != nil {
-				stack = append(stack, p.Right)
-			} else {
-				depth++
-			}
-			// return true
-		}
-		if depth != 0 {
-			for _, p := range stack {
-				stack = stack[1:]
-				if p.Left != nil {
-					depth++
-				}
-				if p.Right != nil {
-					depth++
-				}
-			}
-			if depth >= 2 {
-				return false
-			} else {
-				return true
-			}
-		}
+	leftBool, leftHeight := dfs(root.Left)
+	rightBool, rightHeight := dfs(root.Right)
+	diff := abs(leftHeight - rightHeight)
+	// depth := 1 + max(leftHeight, rightHeight)
+	if leftBool && rightBool && diff <= 1 {
+		return true, 1 + max(leftHeight, rightHeight)
 	}
-	return ans
+	return false, -1
 }
 
-// func countNodes(root *TreeNode) (ans int) {
-// 	if root == nil {
-// 		return 0
-// 	}
-// 	ans = 1 + countNodes(root.Right) + countNodes(root.Left)
-// 	return ans
-// }
+func abs(n int) int {
+	if n < 0 {
+		return -n
+	}
+	return n
+}
+func max(a int, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+
+// 	1
+//   2	  3
+//  4 5  6
+//  8
+// [1,2,3,4,5,6,null,8]
 
 func main() {
-	// var Node7 *TreeNode = &TreeNode{
-	// 	Val: 7.0,
-	// }
-	// var Node6 *TreeNode = &TreeNode{
-	// 	Val: 6.0,
-	// }
-	// var Node5 *TreeNode = &TreeNode{
-	// 	Val: 5.0,
-	// }
-	// var Node4 *TreeNode = &TreeNode{
-	// 	Val: 4.0, Right: Node5,
-	// }
+	var Node8 *TreeNode = &TreeNode{
+		Val: 7.0,
+	}
+	var Node7 *TreeNode = &TreeNode{
+		Val: 7.0,
+	}
+	var Node6 *TreeNode = &TreeNode{
+		Val: 6.0,
+	}
+	var Node5 *TreeNode = &TreeNode{
+		Val: 5.0,
+	}
+	var Node4 *TreeNode = &TreeNode{
+		Val: 4.0, Left: Node8,
+	}
 	var Node3 *TreeNode = &TreeNode{
-		Val: 3.0,
+		Val: 3.0, Left: Node6, Right: Node7,
 	}
 	var Node2 *TreeNode = &TreeNode{
-		Val: 2.0, Left: Node3,
+		Val: 2.0, Left: Node4, Right: Node5,
 	}
 	var Node1 *TreeNode = &TreeNode{
-		Val: 1.0, Left: Node2,
+		Val: 1.0, Left: Node2, Right: Node3,
 	}
-
+	// [1,null,2,null,3]
 	isBalanced(Node1)
 }
 

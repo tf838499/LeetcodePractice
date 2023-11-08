@@ -71,7 +71,7 @@
 - [x] 104. Maximum Depth of Binary Tree
 - [x] 111. Minimum Depth of Binary Tree
 - [ ] 222. Count Complete Tree Nodes
-- [ ] 110. Balanced Binary Tree
+- [x] 110. Balanced Binary Tree
 - [ ] 257. Binary Tree Paths
 - [ ] 513. Find Bottom Left Tree Value
 - [ ] 112. Path Sum

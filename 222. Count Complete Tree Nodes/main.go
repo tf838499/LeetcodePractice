@@ -1,11 +1,9 @@
 package main
 
-import (
 // "fmt"
 // "strconv"
 // "strings"
 // "math"
-)
 
 /*
 Medium
@@ -29,6 +27,11 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+// According to Wikipedia, every level,
+// except possibly the last,
+// is completely filled in a complete binary tree,
+// and all nodes in the last level are as far left as possible.
+//  It can have between 1 and 2h nodes inclusive at the last level h.
 func countNodes(root *TreeNode) (ans int) {
 	if root == nil {
 		return 0
