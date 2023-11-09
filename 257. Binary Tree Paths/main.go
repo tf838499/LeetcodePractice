@@ -1,11 +1,11 @@
 package main
 
-import (
-	// "fmt"
-	"strconv"
-	// "strings"
-	// "math"
-)
+import "strconv"
+
+// "fmt"
+
+// "strings"
+// "math"
 
 /*
 easy
@@ -13,7 +13,8 @@ dfs
 recursion
 doing
 
-Given the root of a binary tree, return all root-to-leaf paths in any order.
+Given the root of a binary tree,
+return all root-to-leaf paths in any order.
 
 A leaf is a node with no children.
 
@@ -26,33 +27,40 @@ type TreeNode struct {
 	Left  *TreeNode
 	Right *TreeNode
 }
-func binaryTreePaths(root *TreeNode) []string{
-	ans := []string{}
-	travel = func()
-} 
+
 // func binaryTreePaths(root *TreeNode) []string {
-// 	res := make([]string, 0)
-// 	var travel func(node *TreeNode, s string)
-
-// 	travel = func(node *TreeNode, s string) {
-// 		if node.Left == nil && node.Right == nil {
-// 			v := s + strconv.Itoa(node.Val)
-// 			res = append(res, v)
-// 			return
-// 		}
-// 		s = s + strconv.Itoa(node.Val) + "->"
-// 		if node.Left != nil {
-// 			travel(node.Left, s)
-// 		}
-// 		if node.Right != nil {
-// 			travel(node.Right, s)
-// 		}
-// 	}
-
-// 	travel(root, "")
-// 	return res
+// 	// dfs := *[]TreeNode{}
 // }
+func binaryTreePaths(root *TreeNode) []string {
+	tmp := []string{}
+	ans := []string{}
+	if root == nil {
+		return ans
+	}
 
+	stack := []*TreeNode{}
+	stack = append(stack, root)
+	tmp = append(tmp, strconv.Itoa(root.Val))
+	for len(stack) != 0 {
+		lenStack := len(stack)
+		for i := 0; i < lenStack; i++ {
+			if stack[i].Left != nil {
+				stack = append(stack, stack[i].Left)
+				tmp = append(tmp, tmp[i]+"->"+strconv.Itoa(stack[i].Left.Val))
+			}
+			if stack[i].Right != nil {
+				stack = append(stack, stack[i].Right)
+				tmp = append(tmp, tmp[i]+"->"+strconv.Itoa(stack[i].Right.Val))
+			}
+			if stack[i].Left == nil && stack[i].Right == nil {
+				ans = append(ans, tmp[i])
+			}
+		}
+		stack = stack[lenStack:]
+		tmp = tmp[lenStack:]
+	}
+	return ans
+}
 
 func main() {
 	// var Node7 *TreeNode = &TreeNode{
