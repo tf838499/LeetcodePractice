@@ -74,7 +74,7 @@
 - [x] 110. Balanced Binary Tree
 - [x] 257. Binary Tree Paths
 - [x] 513. Find Bottom Left Tree Value
-- [ ] 112. Path Sum
+- [x] 112. Path Sum 
 - [ ] 106. Construct Binary Tree from Inorder and Postorder Traversal
 - [ ] 654. Maximum Binary Tree
 - [ ] 617. Merge Two Binary Trees
@@ -91,7 +91,6 @@
 
 ### Backtracking
 
-- [ ] 77. Combinations
 - [ ] 77. Combinations
 - [ ] 216. Combination Sum III
 - [ ] 17. Letter Combinations of a Phone Number
