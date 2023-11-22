@@ -75,8 +75,8 @@
 - [x] 257. Binary Tree Paths
 - [x] 513. Find Bottom Left Tree Value
 - [x] 112. Path Sum 
-- [ ] 106. Construct Binary Tree from Inorder and Postorder Traversal
-- [ ] 654. Maximum Binary Tree
+- [x] 106. Construct Binary Tree from Inorder and Postorder Traversal
+- [x] 654. Maximum Binary Tree
 - [ ] 617. Merge Two Binary Trees
 - [ ] 700. Search in a Binary Search Tree
 - [ ] 98. Validate Binary Search Tree

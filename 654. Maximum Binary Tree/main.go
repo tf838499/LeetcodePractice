@@ -31,39 +31,20 @@ func constructMaximumBinaryTree(nums []int) *TreeNode {
 	if len(nums) == 0 {
 		return nil
 	}
-	ans := &TreeNode{}
-	index := findMax(nums)
-	ans.Val = nums[index]
-
-	ans.Left = constructMaximumBinaryTree(nums[:index])
-	ans.Right = constructMaximumBinaryTree(nums[index+1:])
-	return ans
-}
-func findMax(nums []int) int {
-	l, r := 0, len(nums)-1
-	fmt.Println(nums)
-	for l < r {
-
-		if nums[l] > nums[r] {
-			r--
-		} else {
-			l++
+	index := 0
+	for i := 0; i < len(nums); i++ {
+		if nums[index] < nums[i] {
+			index = i
 		}
 	}
-	return l
+	left := constructMaximumBinaryTree(nums[0:index])
+	right := constructMaximumBinaryTree(nums[index+1:])
+	return &TreeNode{Val: nums[index], Right: right, Left: left}
 }
 
 func main() {
 	num := []int{3, 2, 1, 6, 0, 5}
 	p := constructMaximumBinaryTree(num)
 	fmt.Println(p)
-	// node5 := &TreeNode{Val: 3}
-	// node4 := &TreeNode{Val: 1}
-	// node3 := &TreeNode{Val: 7}
-	// node2 := &TreeNode{Val: 2, Left: node4, Right: node5}
-	// node1 := &TreeNode{Val: 4, Left: node2, Right: node3}
-
-	// num := []int{-1, 0, 3, 5, 9, 12} // 0
-	// target := 9
 
 }
