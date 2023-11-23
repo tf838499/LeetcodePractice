@@ -5,6 +5,7 @@
 - [x] 977. Squares of a Sorted Array [Easy] [TwoPointer]
 - [x] 209. Minimum Size Subarray Sum [Medium] [SlidingWindow]
 - [ ] 59. Spiral Matrix II
+- [x] 66. Plus One
 
 ### Linked
 
