@@ -1,12 +1,13 @@
 ### Array
 
 - [x] 704. Binary Search [Easy]
-- [x] 27. Remove Element [Easy] [Two Pointer]
+- [x] 27. Remove Element [Easy] [TwoPointer]
 - [x] 977. Squares of a Sorted Array [Easy] [TwoPointer]
 - [x] 209. Minimum Size Subarray Sum [Medium] [SlidingWindow]
 - [ ] 59. Spiral Matrix II
-- [x] 66. Plus One
-
+- [x] 66. Plus One [Easy] [Array]
+- [x] 118. Pascal's Triangle [Easy] [Array]
+- [ ] 118. Pascal's Triangle [Easy] [Array] -> try useing recursion
 ### Linked
 
 - [x] 203. Remove Linked List Elements [Easy] [TwoPointer] | [Recursive]
