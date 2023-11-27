@@ -7,7 +7,7 @@
 - [ ] 59. Spiral Matrix II
 - [x] 66. Plus One [Easy] [Array]
 - [x] 118. Pascal's Triangle [Easy] [Array]
-- [ ] 118. Pascal's Triangle [Easy] [Array] -> try useing recursion
+- [x] 118. Pascal's Triangle [Easy] [Array] -> try useing recursion
 ### Linked
 
 - [x] 203. Remove Linked List Elements [Easy] [TwoPointer] | [Recursive]
