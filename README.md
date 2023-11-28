@@ -4,7 +4,7 @@
 - [x] 27. Remove Element [Easy] [TwoPointer]
 - [x] 977. Squares of a Sorted Array [Easy] [TwoPointer]
 - [x] 209. Minimum Size Subarray Sum [Medium] [SlidingWindow]
-- [ ] 59. Spiral Matrix II
+- [x] 59. Spiral Matrix II
 - [x] 66. Plus One [Easy] [Array]
 - [x] 118. Pascal's Triangle [Easy] [Array]
 - [x] 118. Pascal's Triangle [Easy] [Array] -> try useing recursion
