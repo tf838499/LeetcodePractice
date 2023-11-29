@@ -49,9 +49,9 @@
 - [x] 141. Linked List Cycle : linked
 - [x] 142. Linked List Cycle II : linked
 - [ ] 15. 3Sum
-- [ ] 18. 4Sum
+- [ ] 18. 4Sum  
 - [x] 2807. Insert Greatest Common Divisors in Linked List
-
+- [x] 125. Valid Palindrome  
 ### Stack & Queue
 
 - [ ] 232. Implement Queue using Stacks
@@ -60,7 +60,7 @@
 - [x] 1047. Remove All Adjacent Duplicates In String
 - [x] 150. Evaluate Reverse Polish Notation
 - [x] 239. Sliding Window Maximum
-- [ ] 347. Top K Frequent Elements
+- [x] 347. Top K Frequent Elements
 
 
 ### Binary tree
