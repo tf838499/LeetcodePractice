@@ -52,6 +52,7 @@
 - [ ] 18. 4Sum  
 - [x] 2807. Insert Greatest Common Divisors in Linked List
 - [x] 125. Valid Palindrome  
+- [x] 75. Sort Colors  
 ### Stack & Queue
 
 - [ ] 232. Implement Queue using Stacks
