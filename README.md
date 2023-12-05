@@ -80,7 +80,7 @@
 - [x] 112. Path Sum 
 - [x] 106. Construct Binary Tree from Inorder and Postorder Traversal
 - [x] 654. Maximum Binary Tree
-- [ ] 617. Merge Two Binary Trees
+- [x] 617. Merge Two Binary Trees
 - [ ] 700. Search in a Binary Search Tree
 - [ ] 98. Validate Binary Search Tree
 - [ ] 530. Minimum Absolute Difference in BST

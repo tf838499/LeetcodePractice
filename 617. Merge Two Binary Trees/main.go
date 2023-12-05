@@ -28,57 +28,70 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+func mergeTrees(t1 *TreeNode, t2 *TreeNode) *TreeNode {
+	// if one of t1 and t2 is nil, return the other
+	if t1 == nil {
+		return t2
+	}
+	if t2 == nil {
+		return t1
+	}
+	// merge t1 and t2
+	root := &TreeNode{Val: t1.Val + t2.Val}
+	// recursion
+	root.Left = mergeTrees(t1.Left, t2.Left)
+	root.Right = mergeTrees(t1.Right, t2.Right)
+	return root
+}
 func mergeTrees(root1 *TreeNode, root2 *TreeNode) *TreeNode {
 	// if root1 == nil && root2 == nil {
 	// 	return nil
-	// } else if root1 == nil {
-	// 	return root2
-	// 	// return root1
-	// } else if root2 == nil {
-	// 	return root1
+	// }
+	// if root1 != nil && root2 != nil {
+	// 	root1.Val = root1.Val + root2.Val
 	// }
 	if root1 == nil {
-		return root2
+		root1 = root2
+		return root1
 	}
 	if root2 == nil {
 		return root1
 	}
-	root1.Val = root1.Val + root2.Val
-	root1.Right = mergeTrees(root1.Right, root2.Right)
-	root1.Left = mergeTrees(root1.Left, root2.Left)
-
-	return root1
+	root := &TreeNode{Val: root1.Val + root2.Val}
+	root.Left = mergeTrees(root1.Left, root2.Left)
+	root.Right = mergeTrees(root1.Right, root2.Right)
+	return root
 }
 
 func main() {
 	// num := []int{3, 2, 1, 6, 0, 5}
-	var Node4 *TreeNode = &TreeNode{
-		Val: 5.0,
-	}
+	// var Node4 *TreeNode = &TreeNode{
+	// 	Val: 5,
+	// }
 	var Node3 *TreeNode = &TreeNode{
-		Val: 3.0, Left: Node4,
+		Val: 3,
 	}
 	var Node2 *TreeNode = &TreeNode{
-		Val: 2.0,
+		Val: 2, Left: Node3,
 	}
 	var Node1 *TreeNode = &TreeNode{
-		Val: 1.0, Left: Node3, Right: Node2,
+		Val: 1, Left: Node2, Right: nil,
 	}
 
-	var Node5_1 *TreeNode = &TreeNode{
-		Val: 7.0,
-	}
-	var Node4_1 *TreeNode = &TreeNode{
-		Val: 4.0,
-	}
+	// var Node5_1 *TreeNode = &TreeNode{
+	// 	Val: 7,
+	// }
+	// var Node4_1 *TreeNode = &TreeNode{
+	// 	Val: 4,
+	// }
 	var Node3_1 *TreeNode = &TreeNode{
-		Val: 3.0, Right: Node5_1,
+		Val: 3,
 	}
 	var Node2_1 *TreeNode = &TreeNode{
-		Val: 1.0, Right: Node4_1,
+		Val: 2, Right: Node3_1,
 	}
 	var Node1_1 *TreeNode = &TreeNode{
-		Val: 2.0, Left: Node2_1, Right: Node3_1,
+		Val: 1, Right: Node2_1,
 	}
 	p := mergeTrees(Node1, Node1_1)
 	fmt.Println(p)

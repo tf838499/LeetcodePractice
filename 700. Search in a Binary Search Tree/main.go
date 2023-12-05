@@ -22,6 +22,30 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+//	func searchBST(root *TreeNode, val int) *TreeNode {
+//		if root == nil {
+//			return root
+//		}
+//		queue := []*TreeNode{root}
+//		lenQueue := len(queue)
+//		for lenQueue > 0 {
+//			for i := 0; i < lenQueue; i++ {
+//				node := queue[i]
+//				if node.Val == val {
+//					return node
+//				}
+//				if node.Left != nil {
+//					queue = append(queue, node.Left)
+//				}
+//				if node.Right != nil {
+//					queue = append(queue, node.Right)
+//				}
+//			}
+//			queue = queue[lenQueue:]
+//			lenQueue = len(queue)
+//		}
+//		return nil
+//	}
 func searchBST(root *TreeNode, val int) *TreeNode {
 	if root == nil || root.Val == val {
 		return root
@@ -31,7 +55,6 @@ func searchBST(root *TreeNode, val int) *TreeNode {
 	} else {
 		return searchBST(root.Right, val)
 	}
-	return root
 }
 func main() {
 	// nput: root = [4,2,7,1,3], val = 5
@@ -46,6 +69,6 @@ func main() {
 
 	// num := []int{-1, 0, 3, 5, 9, 12} // 0
 	// target := 9
-	p := searchBST(node1, 5)
+	p := searchBST(node1, 3)
 	fmt.Println(p)
 }

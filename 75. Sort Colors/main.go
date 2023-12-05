@@ -15,39 +15,41 @@ white, and blue, respectively.
 You must solve this problem without using the library's sort function.
 */
 
-// func sortColors(nums []int) {
-// 	if len(nums) < 2 {
-// 		return
-// 	}
-// 	left, right := 0, 1
-// 	tmp := 0
-// 	for right < len(nums) {
-// 		tmp = right
-// 		for nums[left] > nums[right] && left >= 0 {
-// 			nums[left], nums[right] = nums[right], nums[left]
-// 			if left > 0 {
-// 				left--
-// 			}
-// 			right--
-// 		}
-// 		right = tmp + 1
-// 		left = tmp
-// 	}
-// }
 func sortColors(nums []int) {
-	for step := 0; step < len(nums)-1; step++ {
-		pos := step
-		for i := step + 1; i < len(nums); i++ {
-			if nums[pos] > nums[i] {
-				pos = i
+	if len(nums) < 2 {
+		return
+	}
+	left, right := 0, 1
+	tmp := 0
+	for right < len(nums) {
+		tmp = right
+		for nums[left] > nums[right] && left >= 0 {
+			nums[left], nums[right] = nums[right], nums[left]
+			if left > 0 {
+				left--
 			}
+			right--
 		}
-
-		nums[pos], nums[step] = nums[step], nums[pos]
+		right = tmp + 1
+		left = tmp
 	}
 }
+
+// func sortColors(nums []int) {
+// 	for step := 0; step < len(nums)-1; step++ {
+// 		pos := step
+// 		for i := step + 1; i < len(nums); i++ {
+// 			if nums[pos] > nums[i] {
+// 				pos = i
+// 			}
+// 		}
+
+// 		nums[pos], nums[step] = nums[step], nums[pos]
+// 	}
+// 	return
+// }
 func main() {
-	num := []int{2, 2, 0, 2, 1, 1, 0}
+	num := []int{2, 3, 3, 2, 0, 8, 8, 4, 3, 2, 6, 5, 1, 1, 0}
 	// 0 2
 	// 022
 	sortColors(num)
