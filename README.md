@@ -81,8 +81,8 @@
 - [x] 106. Construct Binary Tree from Inorder and Postorder Traversal
 - [x] 654. Maximum Binary Tree
 - [x] 617. Merge Two Binary Trees
-- [ ] 700. Search in a Binary Search Tree
-- [ ] 98. Validate Binary Search Tree
+- [x] 700. Search in a Binary Search Tree
+- [x] 98. Validate Binary Search Tree
 - [ ] 530. Minimum Absolute Difference in BST
 - [ ] 501. Find Mode in Binary Search Tree
 - [ ] 236. Lowest Common Ancestor of a Binary Tree
