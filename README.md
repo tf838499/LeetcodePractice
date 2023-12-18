@@ -83,8 +83,8 @@
 - [x] 617. Merge Two Binary Trees
 - [x] 700. Search in a Binary Search Tree
 - [x] 98. Validate Binary Search Tree
-- [ ] 530. Minimum Absolute Difference in BST
-- [ ] 501. Find Mode in Binary Search Tree
+- [x] 530. Minimum Absolute Difference in BST
+- [x] 501. Find Mode in Binary Search Tree
 - [ ] 236. Lowest Common Ancestor of a Binary Tree
 - [ ] 235. Lowest Common Ancestor of a Binary Search Tree
 - [ ] 701. Insert into a Binary Search Tree

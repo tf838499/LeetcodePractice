@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"math"
 	// "strconv"
 	// "strings"
 )
@@ -28,40 +27,41 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-// var prev *TreeNode
-
-// func isValidBST(root *TreeNode) bool {
-// 	if root == nil {
-// 		return true
-// 	}
-// 	res := true
-// 	if root.Left != nil {
-// 		res = root.Val > root.Left.Val && isValidBST(root.Left)
-// 	}
-// 	if prev != nil && prev.Val >= root.Val {
-// 		return false
-// 	}
-// 	prev = root
-// 	if root.Right != nil && res {
-// 		res = root.Val < root.Right.Val && isValidBST(root.Right)
-// 	}
-// 	return res
-// }
+var Prev *TreeNode
 
 func isValidBST(root *TreeNode) bool {
-
-	return validate(root, math.MinInt, math.MaxInt)
-}
-func validate(root *TreeNode, lower int, upper int) bool {
 	if root == nil {
 		return true
 	}
-	if root.Val > lower && root.Val < upper {
-		return validate(root.Left, lower, root.Val) && validate(root.Right, root.Val, upper)
-	} else {
+	res := true
+	if root.Left != nil {
+		res = root.Val > root.Left.Val && isValidBST(root.Left)
+	}
+	if Prev != nil && Prev.Val > root.Val {
 		return false
 	}
+	Prev = root
+	if root.Right != nil && res {
+		res = root.Val < root.Right.Val && isValidBST(root.Right)
+	}
+	// prev = nil
+	return res
 }
+
+// func isValidBST(root *TreeNode) bool {
+
+// 	return validate(root, math.MinInt, math.MaxInt)
+// }
+// func validate(root *TreeNode, lower int, upper int) bool {
+// 	if root == nil {
+// 		return true
+// 	}
+// 	if root.Val > lower && root.Val < upper {
+// 		return validate(root.Left, lower, root.Val) && validate(root.Right, root.Val, upper)
+// 	} else {
+// 		return false
+// 	}
+// }
 
 // func validate(node *TreeNode, lower int, upper int) bool {
 
@@ -101,9 +101,10 @@ func main() {
 	// var Node1 *TreeNode = &TreeNode{
 	// 	Val: 32, Right: Node3, Left: Node2,
 	// }
-	var Node1 *TreeNode = &TreeNode{
-		Val: 0,
-	}
+	// var Node1 *TreeNode = &TreeNode{
+	// 	Val: 0, Right: &TreeNode{}, Left: &TreeNode{},
+	// }
+	var Node1 *TreeNode
 	p := isValidBST(Node1)
 	fmt.Println(p)
 }
