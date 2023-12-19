@@ -1,15 +1,14 @@
 package main
 
-import (
 // "fmt"
 // "strconv"
 // "strings"
 // "math"
-)
 
 /*
 Given a binary search tree (BST),
-find the lowest common ancestor (LCA) node of two given nodes in the BST.
+find the lowest common ancestor (LCA) node
+of two given nodes in the BST.
 
 According to the definition of LCA on Wikipedia:
 “The lowest common ancestor is defined between
@@ -29,35 +28,44 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+// func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
+// 	if root == nil {
+// 		return root
+// 	}
+// 	if root == p || root == q {
+// 		return root
+// 	}
+// 	var U, V *TreeNode
+// 	if root.Val > p.Val && root.Val > q.Val {
+// 		U = lowestCommonAncestor(root.Left, p, q)
+// 	} else if root.Val < p.Val && root.Val < q.Val {
+// 		V = lowestCommonAncestor(root.Right, p, q)
+// 	} else {
+// 		U = lowestCommonAncestor(root.Left, p, q)
+// 		V = lowestCommonAncestor(root.Right, p, q)
+// 	}
+// 	if U != nil && V != nil {
+// 		return root
+// 	}
+// 	if U != nil {
+// 		return U
+// 	} else {
+// 		return V
+// 	}
+// 	// if
+
+// 	// return nil
+// }
 func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
-	if root == nil {
-		return root
-	}
-	if root == p || root == q {
-		return root
-	}
-	var Rnode, Lnode *TreeNode
-	if root.Val < p.Val && root.Val < q.Val {
-		return lowestCommonAncestor(root.Right, p, q)
-	} else if root.Val > p.Val && root.Val > q.Val {
+	if p.Val < root.Val && q.Val < root.Val {
 		return lowestCommonAncestor(root.Left, p, q)
-	} else {
-		Rnode = lowestCommonAncestor(root.Right, p, q)
-		Lnode = lowestCommonAncestor(root.Left, p, q)
-		if Rnode != nil && Lnode != nil {
-			return root
-		}
-		if Rnode != nil {
-			return Rnode
-		}
-		if Lnode != nil {
-			return Lnode
-		}
-		return nil
+	}
+	if p.Val > root.Val && q.Val > root.Val {
+		return lowestCommonAncestor(root.Right, p, q)
 	}
 
+	return root
 }
-
 func main() {
 
 	// var Node4 *TreeNode = &TreeNode{
