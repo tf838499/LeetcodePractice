@@ -85,8 +85,8 @@
 - [x] 98. Validate Binary Search Tree
 - [x] 530. Minimum Absolute Difference in BST
 - [x] 501. Find Mode in Binary Search Tree
-- [ ] 236. Lowest Common Ancestor of a Binary Tree
-- [ ] 235. Lowest Common Ancestor of a Binary Search Tree
+- [x] 236. Lowest Common Ancestor of a Binary Tree
+- [x] 235. Lowest Common Ancestor of a Binary Search Tree
 - [ ] 701. Insert into a Binary Search Tree
 - [ ] 450. Delete Node in a BST
 - [ ] 669. Trim a Binary Search Tree
