@@ -48,30 +48,30 @@ func recoverTree(root *TreeNode) {
 // 	1         1
 // 3p       2p
 // 	2r		  3r
-// func recoverTree(root *TreeNode) {
-// 	var prev, first, second *TreeNode
+func recoverTree(root *TreeNode) {
+	var prev, first, second *TreeNode
 
-// 	var dfs func(node *TreeNode)
-// 	dfs = func(node *TreeNode) {
-// 		if node == nil {
-// 			return
-// 		}
-// 		dfs(node.Left)
-// 		if prev != nil {
-// 			if first == nil && prev.Val >= node.Val {
-// 				first = prev
-// 			}
-// 			if first != nil && prev.Val >= node.Val {
-// 				second = node
-// 			}
-// 		}
-// 		prev = node
-// 		dfs(node.Right)
-// 	}
-// 	dfs(root)
+	var dfs func(node *TreeNode)
+	dfs = func(node *TreeNode) {
+		if node == nil {
+			return
+		}
+		dfs(node.Left)
+		if prev != nil {
+			if first == nil && prev.Val >= node.Val {
+				first = prev
+			}
+			if first != nil && prev.Val >= node.Val {
+				second = node
+			}
+		}
+		prev = node
+		dfs(node.Right)
+	}
+	dfs(root)
 
-// 	first.Val, second.Val = second.Val, first.Val
-// }
+	first.Val, second.Val = second.Val, first.Val
+}
 func main() {
 
 	var Node3 *TreeNode = &TreeNode{

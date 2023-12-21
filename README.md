@@ -91,7 +91,7 @@
 - [ ] 450. Delete Node in a BST
 - [ ] 669. Trim a Binary Search Tree
 - [ ] 538. Convert BST to Greater Tree
-- [ ] 99. Recover Binary Search Tree
+- [x] 99. Recover Binary Search Tree
 
 ### Backtracking
 
