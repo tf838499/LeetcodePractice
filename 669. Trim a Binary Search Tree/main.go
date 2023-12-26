@@ -30,44 +30,49 @@ func trimBST(root *TreeNode, low int, high int) *TreeNode {
 	if root == nil {
 		return root
 	}
-
-	if root.Val > high {
+	if root.Val > high && root.Val > low {
 		return trimBST(root.Left, low, high)
-	} else if root.Val < low {
+	} else if root.Val < high && root.Val < low {
 		return trimBST(root.Right, low, high)
-	} else {
+	}
+	if root.Val <= high && root.Val >= low {
 		root.Left = trimBST(root.Left, low, high)
 		root.Right = trimBST(root.Right, low, high)
 		return root
 	}
+	return root
 }
 
-// func trimBST(root *TreeNode, L int, R int) *TreeNode {
-//     return walk(root, L, R)
+// func trimBST(root *TreeNode, low int, high int) *TreeNode {
+// 	if root == nil {
+// 		return root
+// 	}
+// 	if root.Val < low {
+// 		return trimBST(root.Right, low, high)
+// 	} else if root.Val > high {
+// 		return trimBST(root.Left, low, high)
+// 	} else {
+// 		root.Left = trimBST(root.Left, low, high)
+// 		root.Right = trimBST(root.Right, low, high)
+// 		return root
+// 	}
 // }
 
-// func walk(node *TreeNode, L, R int) *TreeNode {
-//     if node == nil {
-//         return nil
-//     }
-//     if node.Val < L {
-//         return walk(node.Right, L, R)
-//     } else if node.Val > R {
-//         return walk(node.Left, L, R)
-//     } else {
-//         node.Left = walk(node.Left, L, R)
-//         node.Right = walk(node.Right, L, R)
-//         return node
-//     }
-// }
+// 4 ,5
+//
+//	     	 3
+//		   0   4
+//			2
+//		   1
+//
+// [3,2,null,1]
 func main() {
-
-	// node5 := &TreeNode{Val: 1}
-	node4 := &TreeNode{Val: 1}
+	node5 := &TreeNode{Val: 1}
+	node4 := &TreeNode{Val: 2, Left: node5}
 	node3 := &TreeNode{Val: 4}
-	node2 := &TreeNode{Val: 2, Right: node4}
+	node2 := &TreeNode{Val: 0, Right: node4}
 	node1 := &TreeNode{Val: 3, Left: node2, Right: node3}
 	// [50,30,70,null,40,60,80]
-	p := trimBST(node1, 1, 1)
+	p := trimBST(node1, 1, 3)
 	fmt.Println(p)
 }

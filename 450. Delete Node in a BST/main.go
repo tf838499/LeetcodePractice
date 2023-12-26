@@ -169,38 +169,36 @@ type TreeNode struct {
 //	}
 func deleteNode(root *TreeNode, key int) *TreeNode {
 	if root == nil {
-		return nil
+		return root
 	}
-	if key < root.Val {
+	if root.Val > key {
 		root.Left = deleteNode(root.Left, key)
-		return root
-	}
-	if key > root.Val {
+	} else if root.Val < key {
 		root.Right = deleteNode(root.Right, key)
-		return root
+	} else {
+		if root.Left == nil {
+			return root.Right
+		}
+		if root.Right == nil {
+			return root.Left
+		}
+		if root.Val == key {
+			minNode := findMinNode(root.Right)
+			root.Val = minNode.Val
+			root.Right = deleteNode(root.Right, minNode.Val)
+		}
 	}
-	if root.Right == nil {
-		return root.Left
-	}
-	if root.Left == nil {
-		return root.Right
-	}
-	minnode := root.Right
-	for minnode.Left != nil {
-		minnode = minnode.Left
-	}
-	root.Val = minnode.Val
-	root.Right = deleteNode1(root.Right)
+
 	return root
 }
 
-func deleteNode1(root *TreeNode) *TreeNode {
-	if root.Left == nil {
-		pRight := root.Right
-		root.Right = nil
-		return pRight
+func findMinNode(root *TreeNode) *TreeNode {
+	if root == nil {
+		return root
 	}
-	root.Left = deleteNode1(root.Left)
+	if root.Left != nil {
+		return findMinNode(root.Left)
+	}
 	return root
 }
 
@@ -218,10 +216,10 @@ func deleteNode1(root *TreeNode) *TreeNode {
 // 2   4
 func main() {
 	node6 := &TreeNode{Val: 7}
-	// node5 := &TreeNode{Val: 4}
+	node5 := &TreeNode{Val: 4}
 	node4 := &TreeNode{Val: 2}
 	node3 := &TreeNode{Val: 6, Right: node6}
-	node2 := &TreeNode{Val: 3, Left: node4}
+	node2 := &TreeNode{Val: 3, Left: node4, Right: node5}
 	node1 := &TreeNode{Val: 5, Left: node2, Right: node3}
 	// node1 := &TreeNode{Val: 0}
 	// node7 := &TreeNode{Val: 80}

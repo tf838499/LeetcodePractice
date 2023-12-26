@@ -88,8 +88,8 @@
 - [x] 236. Lowest Common Ancestor of a Binary Tree
 - [x] 235. Lowest Common Ancestor of a Binary Search Tree
 - [x] 701. Insert into a Binary Search Tree
-- [ ] 450. Delete Node in a BST
-- [ ] 669. Trim a Binary Search Tree
+- [x] 450. Delete Node in a BST
+- [x] 669. Trim a Binary Search Tree
 - [ ] 538. Convert BST to Greater Tree
 - [x] 99. Recover Binary Search Tree
 
