@@ -47,22 +47,53 @@ type TreeNode struct {
 
 // }
 
-func convertBST(root *TreeNode) *TreeNode {
-	sum := 0
-	var travel func(*TreeNode)
-	travel = func(root *TreeNode) {
-		if root == nil {
-			return
-		}
-		travel(root.Right)
-		root.Val = root.Val + sum
-		sum = root.Val
-		travel(root.Left)
+//	func convertBST(root *TreeNode) *TreeNode {
+//		sum := 0
+//		var travel func(*TreeNode)
+//		travel = func(root *TreeNode) {
+//			if root == nil {
+//				return
+//			}
+//			travel(root.Right)
+//			root.Val = root.Val + sum
+//			sum = root.Val
+//			travel(root.Left)
+//		}
+//		travel(root)
+//		return root
+//	}
+func getSuccessor(node *TreeNode) *TreeNode {
+	succ := node.Right
+
+	for succ.Left != nil && succ.Left != node {
+		succ = succ.Left
 	}
-	travel(root)
-	return root
+
+	return succ
 }
 
+func convertBST(root *TreeNode) *TreeNode {
+	sum, node := 0, root
+
+	for node != nil {
+		if node.Right == nil {
+			sum += node.Val
+			node.Val = sum
+			node = node.Left
+		} else {
+			succ := getSuccessor(node)
+			if succ.Left == nil {
+				succ.Left, node = node, node.Right
+			} else {
+				succ.Left = nil
+				sum += node.Val
+				node.Val, node = sum, node.Left
+			}
+		}
+	}
+
+	return root
+}
 func main() {
 
 	// root = [4,1,6,0,2,5,7,null,null,null,3,null,null,null,8]
