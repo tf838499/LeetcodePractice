@@ -8,7 +8,8 @@ import (
 /*
 Given the root of a Binary Search Tree (BST),
 convert it to a Greater Tree such that every key of
-the original BST is changed to the original key plus the sum of all keys greater than the original key in BST.
+the original BST is changed to the original key plus
+the sum of all keys greater than the original key in BST.
 
 As a reminder, a binary search tree is a tree that satisfies these constraints:
 
@@ -45,23 +46,23 @@ type TreeNode struct {
 // 	return root
 
 // }
-var sum int
 
 func convertBST(root *TreeNode) *TreeNode {
-	sum = 0
-	traverse(root)
+	sum := 0
+	var travel func(*TreeNode)
+	travel = func(root *TreeNode) {
+		if root == nil {
+			return
+		}
+		travel(root.Right)
+		root.Val = root.Val + sum
+		sum = root.Val
+		travel(root.Left)
+	}
+	travel(root)
 	return root
 }
 
-func traverse(root *TreeNode) {
-	if root == nil {
-		return
-	}
-	traverse(root.Right)
-	sum += root.Val
-	root.Val = sum
-	traverse(root.Left)
-}
 func main() {
 
 	// root = [4,1,6,0,2,5,7,null,null,null,3,null,null,null,8]
