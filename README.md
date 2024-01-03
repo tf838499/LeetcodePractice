@@ -90,12 +90,12 @@
 - [x] 701. Insert into a Binary Search Tree
 - [x] 450. Delete Node in a BST
 - [x] 669. Trim a Binary Search Tree
-- [ ] 538. Convert BST to Greater Tree
+- [x] 538. Convert BST to Greater Tree
 - [x] 99. Recover Binary Search Tree
 
 ### Backtracking
 
-- [ ] 77. Combinations
+- [r] 77. Combinations
 - [ ] 216. Combination Sum III
 - [ ] 17. Letter Combinations of a Phone Number
 - [ ] 39. Combination Sum
