@@ -96,8 +96,8 @@
 ### Backtracking
 
 - [r] 77. Combinations
-- [ ] 216. Combination Sum III
-- [ ] 17. Letter Combinations of a Phone Number
+- [x] 216. Combination Sum III
+- [x] 17. Letter Combinations of a Phone Number
 - [ ] 39. Combination Sum
 - [ ] 40. Combination Sum II
 - [ ] 131. Palindrome Partitioning

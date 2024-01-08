@@ -40,34 +40,34 @@ the smallest sum we can get is 1+2+3+4 = 10 and
 since 10 > 1, there are no valid combination.
 */
 
-// func combinationSum3(k int, n int) [][]int {
-// 	result := make([][]int, 0)
-// 	var comb func(curComb []int, sum int)
-// 	comb = func(curComb []int, sum int) {
-// 		if len(curComb) > k {
-// 			return
-// 		}
-// 		if len(curComb) == k && sum == 0 {
-// 			dst := make([]int, k)
-// 			copy(dst, curComb)
-// 			result = append(result, dst)
-// 		}
-// 		start := 1
-// 		if len(curComb) != 0 {
-// 			start = curComb[len(curComb)-1] + 1
-// 		}
-// 		for i := start; i <= n; i++ {
-// 			if sum < 0 || i > 9 {
-// 				return
-// 			}
-// 			curComb = append(curComb, i)
-// 			comb(curComb, sum-i)
-// 			curComb = curComb[:len(curComb)-1]
-// 		}
-// 	}
-// 	comb(make([]int, 0), n)
-// 	return result
-// }
+func combinationSum3(k int, n int) [][]int {
+	result := make([][]int, 0)
+	var comb func(curComb []int, sum int)
+	comb = func(curComb []int, sum int) {
+		if len(curComb) > k {
+			return
+		}
+		if len(curComb) == k && sum == 0 {
+			dst := make([]int, k)
+			copy(dst, curComb)
+			result = append(result, dst)
+		}
+		start := 1
+		if len(curComb) != 0 {
+			start = curComb[len(curComb)-1] + 1
+		}
+		for i := start; i <= n; i++ {
+			if sum < 0 || i > 9 {
+				return
+			}
+			curComb = append(curComb, i)
+			comb(curComb, sum-i)
+			curComb = curComb[:len(curComb)-1]
+		}
+	}
+	comb(make([]int, 0), n)
+	return result
+}
 func combinationSum3(k int, n int) [][]int {
 	var result [][]int
 
