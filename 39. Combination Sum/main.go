@@ -1,19 +1,16 @@
 package main
 
-import (
 // "fmt"
 // "strconv"
-)
 
 /*
 Given an array of distinct integers candidates and a target integer target,
-return a list of all unique combinations of candidates where the chosen numbers sum to target.
+return a list of all unique combinations of candidates
+where the chosen numbers sum to target.
 You may return the combinations in any order.
 
 The same number may be chosen from candidates an unlimited number of times.
-Two combinations are unique if the
-frequency
-of at least one of the chosen numbers is different.
+Two combinations are unique if the frequency of at least one of the chosen numbers is different.
 
 The test cases are generated such that the number of unique combinations that sum up to target is less than 150 combinations for the given input.
 
@@ -28,34 +25,66 @@ Input: candidates = [2,3,5], target = 8
 Output: [[2,2,2,2],[2,3,3],[3,5]]
 */
 func combinationSum(candidates []int, target int) [][]int {
-	var ans [][]int
+	var result [][]int
 	// current := []int{}
-	combin(candidates, []int{}, target, 0, &ans)
-	return ans
-}
-func combin(candidate, current []int, target, add int, ans *[][]int) {
-	if add == target {
-		dst := make([]int, len(current))
-		copy(dst, current)
-		// result = append(result, dst)
-		*ans = append(*ans, dst)
-		return
+	var comb func(cand, curComb []int, ind, sumtarget int)
+	comb = func(cand, curComb []int, ind, sumtarget int) {
+		if sumtarget == 0 {
+			dst := make([]int, len(curComb))
+			copy(dst, curComb)
+			result = append(result, dst)
+			return
+		}
+		if sumtarget < 0 {
+			return
+		}
+		for i := ind; i < len(cand); i++ {
+			curComb = append(curComb, cand[i])
+			comb(cand, curComb, i, sumtarget-cand[i])
+			// curComb = curComb[1:]
+			curComb = curComb[:len(curComb)-1]
+		}
+
 	}
-	if add > target {
-		return
-	}
-	// idx := 0
-	for i := 0; i < len(candidate); i++ {
-		current = append(current, candidate[i])
-		add = add + candidate[i]
-		combin(candidate[i:], current, target, add, ans)
-		current = current[:len(current)-1]
-		add = add - candidate[i]
-	}
+	comb(candidates, []int{}, 0, target)
+	return result
 }
 
+// 3
+//3 3
+//3	5
+//3
+// func combinationSum(candidates []int, target int) [][]int {
+// 	var ans [][]int
+
+// 	if len(candidates) == 0 {
+// 		return ans
+// 	}
+
+// 	bt(&ans, make([]int, 0), candidates, 0, target)
+
+// 	return ans
+// }
+
+// func bt(ans *[][]int, tmp, nums []int, idx, tgt int) {
+// 	if tgt < 0 || idx > len(nums) {
+// 		return
+// 	}
+
+// 	if tgt == 0 {
+// 		cpyTmp := make([]int, len(tmp))
+// 		copy(cpyTmp, tmp)
+// 		*ans = append(*ans, cpyTmp)
+// 	}
+
+// 	for i := idx; i < len(nums); i++ {
+// 		tmp = append(tmp, nums[i])
+// 		bt(ans, tmp, nums, i, tgt-nums[i])
+// 		tmp = tmp[:len(tmp)-1]
+// 	}
+// }
 func main() {
 
-	inputArray := []int{2, 3, 6, 7}
-	combinationSum(inputArray, 7)
+	inputArray := []int{3, 5, 8}
+	combinationSum(inputArray, 11)
 }
