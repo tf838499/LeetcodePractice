@@ -99,8 +99,8 @@
 - [x] 216. Combination Sum III
 - [x] 17. Letter Combinations of a Phone Number
 - [x] 39. Combination Sum
-- [] 40. Combination Sum II
-- [ ] 131. Palindrome Partitioning
+- [x] 40. Combination Sum II
+- [R] 131. Palindrome Partitioning
 - [ ] 93. Restore IP Addresses
 - [ ] 78. Subsets
 - [ ] 90. Subsets II
