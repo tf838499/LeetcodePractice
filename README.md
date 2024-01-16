@@ -101,8 +101,8 @@
 - [x] 39. Combination Sum
 - [x] 40. Combination Sum II
 - [R] 131. Palindrome Partitioning
-- [ ] 93. Restore IP Addresses
-- [ ] 78. Subsets
+- [R] 93. Restore IP Addresses
+- [R] 78. Subsets
 - [ ] 90. Subsets II
 - [ ] 491. Non-decreasing Subsequences
 - [ ] 46. Permutations

@@ -86,5 +86,5 @@ func palindrome(s string) bool {
 // }
 func main() {
 	// isPalindrome("A man, a plan, a canal: Panama")
-	partition("abbab")
+	partition("aab")
 }
