@@ -1,6 +1,9 @@
 package main
 
-import "strings"
+import (
+	"strconv"
+	"strings"
+)
 
 // "fmt"
 // "strconv"
@@ -71,55 +74,48 @@ Output: ["1.0.10.23","1.0.102.3","10.1.0.23","10.10.2.3","101.0.2.3"]
 // 	// }
 // 	return result
 // }
+
 func restoreIpAddresses(s string) []string {
 	ans := []string{}
-	helper(s, 4, []string{}, &ans)
+	var path []string
+	var substring func(str string, strind int)
+	substring = func(str string, strind int) {
+		if len(path) >= 4 {
+			if len(str) == 0 {
+				joinstr := strings.Join(path, ".")
+				ans = append(ans, joinstr)
+			}
+			return
+		}
+
+		for i := 0; i < len(str); i++ {
+			if str[strind] == '0' && i != strind { // 含有前导 0，无效
+				break
+			}
+			candidate := str[:i+1]
+			value, _ := strconv.Atoi(candidate)
+			if value >= 0 && value <= 255 {
+				path = append(path, candidate)
+				substring(str[i+1:], 0)
+				path = path[:len(path)-1]
+			} else {
+				break
+			}
+		}
+	}
+	substring(s, 0)
 	return ans
 }
 
-func helper(s string, remain int, current []string, ans *[]string) {
-	if remain == 0 {
-		if len(s) != 0 {
-			return
-		}
-		if valid(s) {
-			current = append(current, s)
-		}
-		if len(current) == 4 {
-			temp := strings.Join(current, ".")
-			*ans = append(*ans, temp)
-		}
-		return
-	}
-	if len(s) >= 1 && valid(s[:1]) {
-		helper(s[1:], remain-1, append(current, s[:1]), ans)
-	}
-	if len(s) >= 2 && valid(s[:2]) {
-		helper(s[2:], remain-1, append(current, s[:2]), ans)
-	}
-	if len(s) >= 3 && valid(s[:3]) {
-		helper(s[3:], remain-1, append(current, s[:3]), ans)
-	}
-
-}
-
-func valid(str string) bool {
-	if len(str) > 1 && str[0] == '0' {
-		return false
-	}
-	if len(str) == 1 {
-		return str >= "0" && str <= "9"
-	}
-	if len(str) == 2 {
-		return str >= "10" && str <= "99"
-	}
-	if len(str) == 3 {
-		return str >= "100" && str <= "255"
-	}
-	return false
-}
 func main() {
 
-	restoreIpAddresses("25525511135")
+	restoreIpAddresses("0000")
 
 }
+
+// 255 3
+// 2 2
+//
+//
+//
+//
