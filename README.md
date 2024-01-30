@@ -95,7 +95,7 @@
 
 ### Backtracking
 
-- [r] 77. Combinations
+- [R] 77. Combinations
 - [x] 216. Combination Sum III
 - [x] 17. Letter Combinations of a Phone Number
 - [x] 39. Combination Sum
@@ -103,9 +103,9 @@
 - [R] 131. Palindrome Partitioning
 - [R] 93. Restore IP Addresses
 - [R] 78. Subsets
-- [ ] 90. Subsets II
-- [ ] 491. Non-decreasing Subsequences
-- [ ] 46. Permutations
+- [X] 90. Subsets II
+- [R] 491. Non-decreasing Subsequences
+- [X] 46. Permutations
 - [ ] 47. Permutations II
 - [ ] 332. Reconstruct Itinerary
 - [ ] 51. N-Queens
