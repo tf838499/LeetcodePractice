@@ -106,7 +106,7 @@
 - [X] 90. Subsets II
 - [R] 491. Non-decreasing Subsequences
 - [X] 46. Permutations
-- [ ] 47. Permutations II
+- [R] 47. Permutations II
 - [ ] 332. Reconstruct Itinerary
 - [ ] 51. N-Queens
 - [ ] 37. Sudoku Solver
