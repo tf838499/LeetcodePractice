@@ -20,25 +20,56 @@ Output:
  [1,2,1],
  [2,1,1]]
 Example 2:
-
+	1 1 2
+	11 2
+	112
+	1 12
+	1 12
 Input: nums = [1,2,3]
 Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 */
+func permuteUnique(nums []int) [][]int {
+	result := [][]int{}
+	var comb func([]int, []int)
+	comb = func(currentComb, candidate []int) {
+		if len(candidate) == 0 {
+			dst := make([]int, len(currentComb))
+			copy(dst, currentComb)
+			result = append(result, dst)
+		}
+		visited := map[int]bool{}
+		for i := 0; i < len(candidate); i++ {
+			if visited[candidate[i]] == false {
+				visited[candidate[i]] = true
+			} else {
+				continue
+			}
+			comb(
+				append(currentComb, candidate[i]),
+				append(append([]int{}, candidate[:i]...), candidate[i+1:]...))
+
+		}
+	}
+	sort.Ints(nums)
+	comb([]int{}, nums)
+	return result
+}
+
 // func permuteUnique(nums []int) [][]int {
 // 	result := [][]int{}
 // 	var comb func(current []int, num []int)
-// 	visited := make(map[int]bool)
+// 	// visited := make(map[int]bool)
 // 	comb = func(current, num []int) {
 // 		if len(num) == 0 {
 // 			dst := make([]int, len(current))
 // 			copy(dst, current)
 // 			result = append(result, dst)
 // 		}
-// 		visited = map[int]bool{}
+// 		// visited = map[int]bool{}
 // 		for i := 0; i < len(num); i++ {
-// 			if visited[i] {
-// 				continue
-// 			}
+// 			// if visited[i] {
+// 			// 	continue
+// 			// }
 // 			if i != 0 && num[i] == num[i-1] {
 // 				continue
 // 			}
@@ -52,34 +83,6 @@ Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 // 	comb([]int{}, nums)
 // 	return result
 // }
-func permuteUnique(nums []int) [][]int {
-	result := [][]int{}
-	var comb func(current []int, num []int)
-	// visited := make(map[int]bool)
-	comb = func(current, num []int) {
-		if len(num) == 0 {
-			dst := make([]int, len(current))
-			copy(dst, current)
-			result = append(result, dst)
-		}
-		// visited = map[int]bool{}
-		for i := 0; i < len(num); i++ {
-			// if visited[i] {
-			// 	continue
-			// }
-			if i != 0 && num[i] == num[i-1] {
-				continue
-			}
-
-			comb(append(current, num[i]),
-				append(append([]int{}, append(num[:i])...), num[i+1:]...))
-
-		}
-	}
-	sort.Ints(nums)
-	comb([]int{}, nums)
-	return result
-}
 
 // func permuteUnique(nums []int) [][]int {
 // 	if len(nums) == 0 {

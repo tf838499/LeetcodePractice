@@ -1,9 +1,9 @@
 package main
 
-import (
+import "sort"
+
 // "sort"
 // "strconv"
-)
 
 /*
 Assume you are an awesome parent and want to give your children some cookies.
@@ -31,44 +31,21 @@ You need to output 2.
 
 */
 func findContentChildren(g []int, s []int) int {
-	ans := 0
-	Sort.Ints(g)
-	Sort.Ints(s)
-	for len(s) != 0 && len(g) != 0 {
-		if g[0] < s[0] {
-			s[0] = 0
-			g[0] = 0
-		} else {
-			g[0] = g[0] - s[0]
-			s[0] = 0
-		}
-
-		if g[0] == 0 {
-			g = g[1:]
-			ans++
-		}
-		if s[0] == 0 {
-			s = s[1:]
+	result := 0
+	sort.Ints(g)
+	sort.Ints(s)
+	for i := len(g) - 1; i >= 0; i-- {
+		if g[i] <= s[len(s)-1] {
+			result++
+			s = s[len(s)-1:]
 		}
 	}
-	return ans
+	return result
 }
 
-// func findContentChildren(g []int, s []int) int {
-// 	sort.Ints(g)
-// 	sort.Ints(s)
-// 	chil, cook := 0, 0
-// 	for chil < len(g) && cook < len(s) {
-// 		if g[chil] <= s[cook] {
-// 			chil++
-// 		}
-// 		cook++ //increase num of cookies until the 1st child is content
-// 	}
-// 	return chil
-// }
 func main() {
-	g := []int{1, 2, 3}
-	s := []int{1, 2, 2}
-	findContentChildren(g, s)
+	child := []int{1, 2, 7, 10}
+	cookie := []int{1, 3, 5, 9}
+	findContentChildren(child, cookie)
 
 }
