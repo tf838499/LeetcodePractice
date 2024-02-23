@@ -114,7 +114,7 @@
 ### Greedy algorithm
 
 - [X] 455. Assign Cookies
-- [ ] 376. Wiggle Subsequence
+- [x] 376. Wiggle Subsequence
 - [ ] 53. Maximum Subarray
 - [ ] 122. Best Time to Buy and Sell Stock II
 - [ ] 55. Jump Game
