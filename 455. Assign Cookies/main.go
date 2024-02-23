@@ -30,22 +30,39 @@ You have 3 cookies and their sizes are big enough to gratify all of the children
 You need to output 2.
 
 */
+// func findContentChildren(g []int, s []int) int {
+// 	result := 0
+// 	sort.Ints(g)
+// 	sort.Ints(s)
+
+// 	for i := len(g) - 1; i >= 0; i-- {
+// 		if len(s) == 0 {
+// 			break
+// 		}
+// 		if g[i] <= s[len(s)-1] {
+// 			result++
+// 			s = s[:len(s)-1]
+// 		}
+// 	}
+// 	return result
+// }
 func findContentChildren(g []int, s []int) int {
-	result := 0
+	count := 0
+
 	sort.Ints(g)
 	sort.Ints(s)
-	for i := len(g) - 1; i >= 0; i-- {
-		if g[i] <= s[len(s)-1] {
-			result++
-			s = s[len(s)-1:]
+
+	for _, cookie := range s {
+		if count < len(g) && cookie >= g[count] {
+			count++
 		}
 	}
-	return result
-}
 
+	return count
+}
 func main() {
 	child := []int{1, 2, 7, 10}
-	cookie := []int{1, 3, 5, 9}
+	cookie := []int{3}
 	findContentChildren(child, cookie)
 
 }
