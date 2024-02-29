@@ -115,7 +115,7 @@
 
 - [X] 455. Assign Cookies
 - [x] 376. Wiggle Subsequence
-- [ ] 53. Maximum Subarray
+- [R] 53. Maximum Subarray
 - [ ] 122. Best Time to Buy and Sell Stock II
 - [ ] 55. Jump Game
 - [ ] 45. Jump Game II
