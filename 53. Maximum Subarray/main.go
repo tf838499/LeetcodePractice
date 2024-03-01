@@ -44,30 +44,30 @@ Output: 23
 // 	}
 // 	return MaxTotal
 // }
-func maxSubArray(nums []int) int {
-	n := len(nums)
-	// 这里的dp[i] 表示，最大的连续子数组和，包含num[i] 元素
-	dp := make([]int, n)
-	// 初始化，由于dp 状态转移方程依赖dp[0]
-	dp[0] = nums[0]
-	// 初始化最大的和
-	mx := nums[0]
-	for i := 1; i < n; i++ {
-		// 这里的状态转移方程就是：求最大和
-		// 会面临2种情况，一个是带前面的和，一个是不带前面的和
-		//num := []int{5, 4, -1, 7, 8}
-		dp[i] = max(dp[i-1]+nums[i], nums[i])
-		mx = max(mx, dp[i])
-	}
-	return mx
-}
+// func maxSubArray(nums []int) int {
+// 	n := len(nums)
+// 	// 这里的dp[i] 表示，最大的连续子数组和，包含num[i] 元素
+// 	dp := make([]int, n)
+// 	// 初始化，由于dp 状态转移方程依赖dp[0]
+// 	dp[0] = nums[0]
+// 	// 初始化最大的和
+// 	mx := nums[0]
+// 	for i := 1; i < n; i++ {
+// 		// 这里的状态转移方程就是：求最大和
+// 		// 会面临2种情况，一个是带前面的和，一个是不带前面的和
+// 		//num := []int{5, 4, -1, 7, 8}
+// 		dp[i] = max(dp[i-1]+nums[i], nums[i])
+// 		mx = max(mx, dp[i])
+// 	}
+// 	return mx
+// }
 
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
+// func max(a, b int) int {
+// 	if a > b {
+// 		return a
+// 	}
+// 	return b
+// }
 
 // func maxSubArray(nums []int) int {
 // 	max, sum := nums[0], nums[0]
@@ -99,6 +99,23 @@ func max(a, b int) int {
 // 	}
 // 	return max
 // }
+func maxSubArray(nums []int) int {
+	dt := make([]int, len(nums))
+	dt[0] = nums[0]
+	mx := nums[0]
+	for i := 1; i < len(nums); i++ {
+		dt[i] = max(dt[i-1]+nums[i], nums[i])
+		mx = max(dt[i], mx)
+	}
+	return mx
+}
+func max(a, b int) int {
+	if a > b {
+		return a
+	} else {
+		return b
+	}
+}
 func main() {
 
 	// num := []int{5, 4, -1, 7, 8}
