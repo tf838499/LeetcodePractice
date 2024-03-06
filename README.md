@@ -119,7 +119,7 @@
 - [X] 122. Best Time to Buy and Sell Stock II
 - [R] 55. Jump Game
 - [R] 45. Jump Game II
-- [ ] 1005. Maximize Sum Of Array After K Negations
+- [R] 1005. Maximize Sum Of Array After K Negations
 - [ ] 134. Gas Station
 - [ ] 135. Candy
 - [ ] 860. Lemonade Change

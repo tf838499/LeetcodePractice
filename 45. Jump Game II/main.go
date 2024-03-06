@@ -101,6 +101,6 @@ func jump(nums []int) int {
 // 	}
 // }
 func main() {
-	input := []int{1, 1, 1, 1, 1, 0}
+	input := []int{1, 1, 0, 1, 1, 0}
 	jump(input)
 }
