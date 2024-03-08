@@ -121,7 +121,7 @@
 - [R] 45. Jump Game II
 - [R] 1005. Maximize Sum Of Array After K Negations
 - [R] 134. Gas Station
-- [ ] 135. Candy
+- [R] 135. Candy
 - [ ] 860. Lemonade Change
 - [ ] 406. Queue Reconstruction by Height
 - [ ] 452. Minimum Number of Arrows to Burst Balloons
