@@ -84,31 +84,32 @@ Output: 23
 // 	return max
 // }
 
-// func maxSubArray(nums []int) int {
-// 	max := nums[0]
-// 	count := 0
-
-// 	for i := 0; i < len(nums); i++ {
-// 		count += nums[i]
-// 		if count > max {
-// 			max = count
-// 		}
-// 		if count < 0 {
-// 			count = 0
-// 		}
-// 	}
-// 	return max
-// }
 func maxSubArray(nums []int) int {
-	dt := make([]int, len(nums))
-	dt[0] = nums[0]
-	mx := nums[0]
-	for i := 1; i < len(nums); i++ {
-		dt[i] = max(dt[i-1]+nums[i], nums[i])
-		mx = max(dt[i], mx)
+	max := nums[0]
+	count := 0
+
+	for i := 0; i < len(nums); i++ {
+		count += nums[i]
+		if count > max {
+			max = count
+		}
+		if count < 0 {
+			count = 0
+		}
 	}
-	return mx
+	return max
 }
+
+// func maxSubArray(nums []int) int {
+// 	dt := make([]int, len(nums))
+// 	dt[0] = nums[0]
+// 	mx := nums[0]
+// 	for i := 1; i < len(nums); i++ {
+// 		dt[i] = max(dt[i-1]+nums[i], nums[i])
+// 		mx = max(dt[i], mx)
+// 	}
+// 	return mx
+// }
 func max(a, b int) int {
 	if a > b {
 		return a
