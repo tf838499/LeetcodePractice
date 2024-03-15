@@ -133,8 +133,8 @@
 
 ### Dynamic programming
 
-- [ ] 509. Fibonacci Number
-- [ ] 70. Climbing Stairs
+- [X] 509. Fibonacci Number
+- [X] 70. Climbing Stairs
 - [ ] 746. Min Cost Climbing Stairs
 - [ ] 62. Unique Paths
 - [ ] 63. Unique Paths II
