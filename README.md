@@ -136,8 +136,8 @@
 - [X] 509. Fibonacci Number
 - [X] 70. Climbing Stairs
 - [X] 746. Min Cost Climbing Stairs
-- [ ] 62. Unique Paths
-- [ ] 63. Unique Paths II
+- [X] 62. Unique Paths
+- [X] 63. Unique Paths II
 - [ ] 343. Integer Break
 - [ ] 96. Unique Binary Search Trees
 
