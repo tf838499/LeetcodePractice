@@ -58,50 +58,59 @@ It does not matter what you leave beyond the returned k (hence they are undersco
 
 // 	return end + 1
 // }
-// func removeElement(nums []int, val int) int {
-
-// 	size := len(nums)
-
-// 	// two-pointers
-// 	// otherIdx: index for other elements
-// 	// targetIdx: index for target elements with val
-
-// 	otherIdx, targetIdx := 0, size-1
-
-// 	for otherIdx <= targetIdx {
-
-// 		if nums[otherIdx] == val {
-
-// 			// swap target elements to the tail side
-// 			nums[otherIdx], nums[targetIdx] = nums[targetIdx], nums[otherIdx]
-
-// 			targetIdx -= 1
-// 		} else {
-
-// 			// increase the index when we meet others
-// 			otherIdx += 1
-// 		}
-
-// 	}
-
-// 	// length of others is the answer
-// 	return otherIdx
-
-// }
 func removeElement(nums []int, val int) int {
-	l, r := 0, len(nums)-1
 
-	for l < r {
-		if nums[l] == val {
-			nums[l], nums[r] = nums[r], nums[l]
-			r--
+	size := len(nums)
+
+	// two-pointers
+	// otherIdx: index for other elements
+	// targetIdx: index for target elements with val
+
+	otherIdx, targetIdx := 0, size-1
+
+	for otherIdx <= targetIdx {
+
+		if nums[otherIdx] == val {
+
+			// swap target elements to the tail side
+			nums[otherIdx], nums[targetIdx] = nums[targetIdx], nums[otherIdx]
+
+			targetIdx -= 1
 		} else {
-			l++
+
+			// increase the index when we meet others
+			otherIdx += 1
 		}
-		// l++
+
 	}
-	return l
+
+	// length of others is the answer
+	return otherIdx
+
 }
+
+// func removeElement(nums []int, val int) int {
+// 	if len(nums) == 1 {
+// 		if nums[0] == val {
+// 			return 0
+// 		} else {
+// 			return 1
+// 		}
+// 	}
+// 	l, r := 0, len(nums)-1
+// 	for l < r {
+// 		for l < len(nums) && nums[l] != val {
+// 			l++
+// 		}
+// 		for r > 0 && nums[r] == val {
+// 			r--
+// 		}
+// 		if l < r && nums[l] == val {
+// 			nums[l], nums[r] = nums[r], nums[l]
+// 		}
+// 	}
+// 	return l
+// }
 
 func main() {
 	// hay := "mississippi"

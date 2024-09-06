@@ -110,7 +110,8 @@
 - [ ] 332. Reconstruct Itinerary
 - [ ] 51. N-Queens
 - [ ] 37. Sudoku Solver
-
+- [ ] 698.划分为k个相等的子集
+- [ ] 473.火柴拼正方形
 ### Greedy algorithm
 
 - [X] 455. Assign Cookies
@@ -143,9 +144,9 @@
 
 ### Knapsack Problem
 
-- [ ] 416. Partition Equal Subset Sum
-- [ ] 1049. Last Stone Weight II
-- [ ] 494. Target Sum
+- [R] 416. Partition Equal Subset Sum
+- [R] 1049. Last Stone Weight II
+- [R] 494. Target Sum
 - [ ] 474. Ones and Zeroes
 - [ ] 518. Coin Change II
 - [ ] 377. Combination Sum IV

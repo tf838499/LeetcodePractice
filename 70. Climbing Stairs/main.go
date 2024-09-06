@@ -28,6 +28,21 @@ Explanation: There are three ways to climb to the top.
 
 
 */
+// func climbStairs(n int) int {
+// 	if n == 0 {
+// 		return 0
+// 	}
+// 	if n == 1 {
+// 		return 1
+// 	}
+// 	dP := make([]int, n+1)
+// 	dP[1] = 1
+// 	dP[2] = 2
+// 	for i := 3; i <= n; i++ {
+// 		dP[i] = dP[i-1] + dP[i-2]
+// 	}
+// 	return dP[n]
+// }
 func climbStairs(n int) int {
 	if n == 0 {
 		return 0
@@ -35,14 +50,22 @@ func climbStairs(n int) int {
 	if n == 1 {
 		return 1
 	}
-	dP := make([]int, n+1)
-	dP[1] = 1
-	dP[2] = 2
+	dP := make([]int, 2)
+	dP[0] = 1
+	dP[1] = 2
 	for i := 3; i <= n; i++ {
-		dP[i] = dP[i-1] + dP[i-2]
+		dP[0], dP[1] = dP[1], dP[0]+dP[1]
 	}
-	return dP[n]
+	return dP[1]
 }
+
+// func climbStairs(n int) int {
+// 	next, secondNext := 0, 1
+// 	for ; n > 0; n-- {
+// 		next, secondNext = secondNext, next+secondNext
+// 	}
+// 	return secondNext
+// }
 func main() {
-	climbStairs(1)
+	climbStairs(3)
 }
